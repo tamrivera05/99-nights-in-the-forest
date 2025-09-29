@@ -1,0 +1,29 @@
+---
+import Themes from "astro-themes";
+import "../styles/global.css";
+import Head from "./Head.astro";
+import Navigation from "../components/Layout/Navigation.astro";
+import Footer from "../components/Layout/Footer.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description }: Props = Astro.props;
+
+// Set Up
+// 1. Head
+// 2. Change title from astro config
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <Head title={title} description={description} />
+  <Themes />
+  <body>
+    <Navigation />
+    <slot />
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,121 @@
+---
+import { AstroFont } from "astro-font";
+import { SEO } from "astro-seo";
+import { Schema } from "astro-seo-schema";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description }: Props = Astro.props;
+---
+
+<head>
+  <SEO
+    title={title}
+    titleTemplate="%s | TimBuilding Web Designs"
+    description={description}
+    charset="UTF-8"
+    openGraph={{
+      basic: {
+        // OG title should never be the same as the page title
+        title: "₱0 down, ₱3,500 per month website",
+        type: "website",
+        image: `${import.meta.env.SITE}/og-image.png`,
+        url: `${import.meta.env.SITE}`,
+      },
+      optional: {
+        description: "We build websites for small businesses",
+      },
+    }}
+    twitter={{
+      card: "summary_large_image",
+      title: "₱0 down, ₱3,500 per month website",
+      description: "We build websites for small businesses",
+      image: `${import.meta.env.SITE}/og-image.png`,
+    }}
+    extend={{
+      link: [
+        {
+          rel: "icon",
+          href: "/favicon.svg",
+        },
+        {
+          rel: "sitemap",
+          href: "/sitemap-index.xml",
+        },
+      ],
+      meta: [
+        {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1.0",
+        },
+      ],
+    }}
+  />
+  <Schema
+    item={{
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      name: "TimBuilding Web Designs",
+      description: "${description}",
+      priceRange: "₱3,500/month",
+      image: "${image}",
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: "Philippines",
+      },
+      url: "${canonicalURL}",
+      telephone: "+63",
+      openingHours: "Mo-Fr 09:00-17:00",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        price: "3500",
+        priceCurrency: "PHP",
+        minPrice: "3500",
+        maxPrice: "3500",
+      },
+    }}
+  />
+  <AstroFont
+    config={[
+      {
+        src: [],
+        name: "Inter",
+        // Google Fonts URL
+        googleFontsURL:
+          "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+        preload: true,
+        display: "swap",
+        selector: "body",
+        fallback: "sans-serif",
+      },
+      {
+        src: [],
+        name: "IBM Plex Sans",
+        // Google Fonts URL
+        googleFontsURL:
+          "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap",
+        preload: true,
+        display: "swap",
+        selector: ".font-ibm",
+        fallback: "sans-serif",
+      },
+    ]}
+  />
+  <script>
+    // Dark mode toggle
+    document.documentElement.classList.toggle(
+      "dark",
+      localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches),
+    );
+  </script>
+  <script>
+    // Intersection observer for animations
+    import { Observer } from "tailwindcss-intersect";
+    Observer.start();
+  </script>
+</head>

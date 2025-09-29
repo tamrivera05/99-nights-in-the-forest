@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import logo from "../../assets/timbuilding.svg";
+---
+
+<footer
+  class="bg-background font-ibm container mx-auto grid grid-cols-1 gap-10 px-5 py-20 md:grid-cols-3"
+>
+  <Image src={logo} alt="logo" width={200} height={200} />
+
+  <div>
+    <span class="text-text/75 font-bold">Contact</span>
+    <ul class="text-text/80 mt-2 flex flex-col gap-2">
+      <li>
+        <div class="flex items-center gap-2">
+          <Icon name="mail" />
+          <span>tim@timburger.com</span>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center gap-2">
+          <Icon name="map-pin" />
+          <span>Cainta, Rizal Philippines</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <span class="text-text/75 font-bold">Navigation</span>
+    <div class="text-text/75 mt-2 grid grid-cols-2 gap-x-10 gap-y-4">
+      <a href="/home">Home</a>
+      <a href="/products">Products</a>
+    </div>
+  </div>
+
+  <div
+    class="border-border flex w-full items-center justify-center border-t pt-4 md:col-span-3"
+  >
+    <a href="https://timbuilding.dev" class="text-sm font-semibold"
+      >&copy; Copyright 2025 - Designed & Developed By TimBuilding Web Designs</a
+    >
+  </div>
+</footer>

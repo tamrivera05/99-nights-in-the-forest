@@ -1,0 +1,73 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "./Button.astro";
+---
+
+<Button variant="ghost" id="theme-toggle" aria-label="Toggle theme">
+  <span id="theme-icon-container">
+    <Icon name="moon" class="dark-icon" />
+    <Icon name="sun" class="light-icon hidden" />
+  </span>
+</Button>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Theme icon handling
+    const updateThemeIcon = () => {
+      const currentTheme =
+        document.documentElement.attributes.getNamedItem("data-theme")?.value;
+      const moonIcon = document.querySelector(".dark-icon");
+      const sunIcon = document.querySelector(".light-icon");
+
+      if (moonIcon && sunIcon) {
+        if (currentTheme === "dark") {
+          moonIcon.classList.add("hidden");
+          sunIcon.classList.remove("hidden");
+        } else {
+          moonIcon.classList.remove("hidden");
+          sunIcon.classList.add("hidden");
+        }
+      }
+    };
+
+    // Initial icon update
+    updateThemeIcon();
+
+    // Watch for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "data-theme"
+        ) {
+          updateThemeIcon();
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    // Handle theme toggle button click
+    const themeButton = document.querySelector("#theme-toggle");
+    if (themeButton) {
+      themeButton.addEventListener("click", () => {
+        const currentTheme =
+          document.documentElement.attributes.getNamedItem("data-theme")?.value;
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        document.dispatchEvent(
+          new CustomEvent("set-theme", { detail: newTheme }),
+        );
+      });
+    }
+
+    // Listen for theme change events
+    document.addEventListener("set-theme", (event) => {
+      if (event.detail === "dark" || event.detail === "light") {
+        updateThemeIcon();
+      }
+    });
+  });
+</script>

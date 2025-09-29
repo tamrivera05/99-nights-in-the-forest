@@ -1,0 +1,78 @@
+---
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "../../lib/utils";
+
+const buttonVariants = cva(
+  // Base styles applied to all variants
+  "rounded-lg inline-flex items-center justify-center text-center font-medium cursor-pointer",
+  {
+    variants: {
+      variant: {
+        primary:
+          "bg-primary dark:bg-white text-white dark:text-black dark:hover:text-white hover:bg-black",
+        secondary:
+          "bg-secondary dark:bg-white text-white hover:bg-black dark:text-black dark:hover:text-white",
+        outline: "border-border border text-text hover:bg-border",
+        ghost: "",
+      },
+      size: {
+        default: "py-3 px-7",
+        small: "px-5 py-2",
+        icon: "w-10 h-10",
+      },
+    },
+    defaultVariants: {
+      variant: "primary",
+      size: "default",
+    },
+  },
+);
+
+export type ButtonVariantProps = VariantProps<typeof buttonVariants>;
+
+interface Props extends ButtonVariantProps {
+  class?: string;
+  onclick?: string;
+  id?: string;
+}
+
+const {
+  variant,
+  size,
+  class: className = "",
+  onclick,
+  id,
+  ...rest
+} = Astro.props;
+
+const getClasses = () => {
+  const baseClasses = buttonVariants({ variant, size });
+
+  // Apply transition effects for all variants except ghost
+  // if (variant !== "ghost") {
+  //   return cn(
+  //     baseClasses,
+  //     "before:absolute before:inset-0 before:w-full before:h-full before:z-[1] before:transition-all before:duration-200",
+  //     "after:absolute after:inset-0 after:w-full after:h-full after:z-[2] after:translate-x-[-100%] after:transition-transform after:duration-300 hover:after:translate-x-0",
+  //     className,
+  //   );
+  // }
+
+  // Simple styles for ghost variant without transition effects
+  return cn(baseClasses, className);
+};
+
+const classes = getClasses();
+---
+
+<button class={classes} onclick={onclick} id={id} {...rest}>
+  <span
+    class={cn(
+      variant === "outline" &&
+        "text-text group-hover:text-white transition-colors duration-300",
+      "relative z-[10]",
+    )}
+  >
+    <slot />
+  </span>
+</button>
