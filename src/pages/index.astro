@@ -1,18 +1,88 @@
 ---
-import Button from "../components/ui/Button.astro";
 import Layout from "../layouts/Layout.astro";
+import titleSvg from "../assets/Text.svg?url";
+import backgroundImage from "../assets/backgroundImage.png";
+import ramImage from "../assets/ram.png";
+import vectorLeft from "../assets/vectorLeft.svg?url";
+import vectorRight from "../assets/vectorRight.svg?url";
 ---
 
-<Layout title="Homer">
-  <h1 class="text-2xl font-bold">Home</h1>
-  <p>heading</p>
+<Layout
+  title="99 Nights in the Forest"
+  description="Claim Roblox items for survival in 99 Nights in the Forest."
+  showNavigation={false}
+  showFooter={false}
+>
+  <main class="relative flex h-screen flex-col items-center overflow-hidden bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)] px-4 py-0">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#042739_0%,#01171f_55%,#000000_100%)]" />
+      <div class="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 overflow-hidden blur-[5px]">
+        <img src={backgroundImage.src} alt="" class="h-full w-full object-cover" />
+      </div>
+      <div class="absolute inset-0 bg-black/35" />
+    </div>
 
-  <div class="container flex flex-col items-center py-96 gap-3">
-    <Button>ewew</Button>
-    <Button variant="primary" size="small">ewew</Button>
-    <Button variant="primary">Primary</Button>
-    <Button variant="outline">Secondary</Button>
-    <Button variant="ghost">Secondary</Button>
-    <Button variant="primary" size="icon">ewew</Button>
-  </div>
+    <div class="relative z-10 flex w-full max-w-[1200px] flex-1 flex-col items-center gap-6">
+      <header class="mt-3 flex w-full items-center justify-between rounded-[18px] bg-black/30 px-6 py-4 text-white shadow-[0px_5px_16px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:px-8 lg:px-12">
+        <div class="flex items-center gap-6 sm:gap-8 lg:gap-12">
+          <div class="relative h-[64px] w-[68px] sm:h-[78px] sm:w-[82px] lg:h-[88px] lg:w-[92px]">
+            <img src={ramImage.src} alt="99 Nights in the Forest ram icon" class="absolute inset-0 h-full w-full object-contain" />
+          </div>
+          <img src={titleSvg} alt="99 Nights in the Forest" class="h-[44px] w-auto object-contain sm:h-[56px] lg:h-[68px]" />
+        </div>
+        <nav class="hidden items-center gap-[24px] text-[16px] font-bold tracking-[-0.32px] sm:flex lg:gap-[32px]">
+          <a href="/" class="leading-[32px]">Home</a>
+          <a href="/generator" class="leading-[32px]">Generator</a>
+        </nav>
+        <a
+          href="/generator"
+          class="rounded-[8px] bg-[#950606] px-4 py-2 text-[14px] font-semibold text-white shadow-[0px_5px_10.8px_rgba(0,0,0,0.25)] sm:hidden"
+        >
+          Get Items
+        </a>
+      </header>
+
+      <section class="flex w-full flex-1 flex-col items-center justify-center gap-4 pb-4 pt-2 sm:gap-6 lg:gap-8">
+        <div class="relative w-full max-w-[480px] max-h-[50vh] aspect-[689/746] sm:max-w-[560px] lg:max-w-[600px]">
+          <img
+            src={vectorLeft}
+            alt=""
+            aria-hidden="true"
+            class="absolute left-[7%] top-[18%] w-[40%] opacity-70 sm:opacity-90"
+          />
+          <img
+            src={vectorRight}
+            alt=""
+            aria-hidden="true"
+            class="absolute right-[7%] top-[18%] w-[38%] opacity-70 sm:opacity-90"
+          />
+          <img
+            src={titleSvg}
+            alt="99 Nights in the Forest"
+            class="absolute left-[12%] -top-[10%] w-[74%] object-contain"
+          />
+          <img
+            src={ramImage.src}
+            alt="Ram silhouette"
+            class="absolute left-[15%] -top-[10%] w-[66%] object-contain"
+          />
+        </div>
+
+        <div class="flex w-full max-w-[460px] flex-col items-center gap-4 px-4 text-white sm:gap-5">
+          <div class="text-center text-[17px] font-bold tracking-[-0.48px] sm:text-[19px] lg:text-[20px]">
+            <p class="leading-[28px] sm:leading-[32px] lg:leading-[34px]">99 Nights in the Forest Codes</p>
+            <p class="leading-[28px] sm:leading-[32px] lg:leading-[34px]">
+              Enter your Roblox username in the Generator page
+            </p>
+          </div>
+          <a
+            href="/generator"
+            class="flex h-[52px] w-full items-center justify-center rounded-[8px] bg-[#950606] px-[16px] py-[14px] text-[16px] font-semibold text-white"
+          >
+            GET FREE ITEMS
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
 </Layout>
