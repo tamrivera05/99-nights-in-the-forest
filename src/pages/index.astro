@@ -1,11 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import titleSvg from "../assets/Text.svg?url";
-
-const backgroundImage = "http://localhost:3845/assets/912ea59d46c4473bae59c46701fe65cfe535cfe6.png";
-const ramImage = "http://localhost:3845/assets/49c6a340f8c710a759562f6a55166435a1270f0d.png";
-const vectorLeft = "http://localhost:3845/assets/94e47f1c49a2bdd056faafb03ba2e73901c9da18.svg";
-const vectorRight = "http://localhost:3845/assets/c9fa7a33f92e6f9ca44c6ea8040a434758dcddee.svg";
+import backgroundImage from "../assets/backgroundImage.png";
+import ramImage from "../assets/ram.png";
+import vectorLeft from "../assets/vectorLeft.svg?url";
+import vectorRight from "../assets/vectorRight.svg?url";
 ---
 
 <Layout
@@ -18,7 +17,7 @@ const vectorRight = "http://localhost:3845/assets/c9fa7a33f92e6f9ca44c6ea8040a43
     <div class="pointer-events-none absolute inset-0 overflow-hidden">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#042739_0%,#01171f_55%,#000000_100%)]" />
       <div class="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 overflow-hidden blur-[5px]">
-        <img src={backgroundImage} alt="" class="h-full w-full object-cover" />
+        <img src={backgroundImage.src} alt="" class="h-full w-full object-cover" />
       </div>
       <div class="absolute inset-0 bg-black/35" />
     </div>
@@ -27,7 +26,7 @@ const vectorRight = "http://localhost:3845/assets/c9fa7a33f92e6f9ca44c6ea8040a43
       <header class="mt-3 flex w-full items-center justify-between rounded-[18px] bg-black/30 px-6 py-4 text-white shadow-[0px_5px_16px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:px-8 lg:px-12">
         <div class="flex items-center gap-6 sm:gap-8 lg:gap-12">
           <div class="relative h-[64px] w-[68px] sm:h-[78px] sm:w-[82px] lg:h-[88px] lg:w-[92px]">
-            <img src={ramImage} alt="99 Nights in the Forest ram icon" class="absolute inset-0 h-full w-full object-contain" />
+            <img src={ramImage.src} alt="99 Nights in the Forest ram icon" class="absolute inset-0 h-full w-full object-contain" />
           </div>
           <img src={titleSvg} alt="99 Nights in the Forest" class="h-[44px] w-auto object-contain sm:h-[56px] lg:h-[68px]" />
         </div>
@@ -63,7 +62,7 @@ const vectorRight = "http://localhost:3845/assets/c9fa7a33f92e6f9ca44c6ea8040a43
             class="absolute left-[12%] -top-[10%] w-[74%] object-contain"
           />
           <img
-            src={ramImage}
+            src={ramImage.src}
             alt="Ram silhouette"
             class="absolute left-[15%] -top-[10%] w-[66%] object-contain"
           />
