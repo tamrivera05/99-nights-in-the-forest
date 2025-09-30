@@ -14,7 +14,7 @@ const vectorRight = "http://localhost:3845/assets/c9fa7a33f92e6f9ca44c6ea8040a43
   showNavigation={false}
   showFooter={false}
 >
-  <main class="relative flex min-h-screen flex-col items-center overflow-hidden bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)] px-4 py-6">
+  <main class="relative flex h-screen flex-col items-center overflow-hidden bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)] px-4 py-0">
     <div class="pointer-events-none absolute inset-0 overflow-hidden">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#042739_0%,#01171f_55%,#000000_100%)]" />
       <div class="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 overflow-hidden blur-[5px]">
@@ -23,8 +23,8 @@ const vectorRight = "http://localhost:3845/assets/c9fa7a33f92e6f9ca44c6ea8040a43
       <div class="absolute inset-0 bg-black/35" />
     </div>
 
-    <div class="relative z-10 flex w-full max-w-[1200px] flex-col items-center gap-10">
-      <header class="mt-4 flex w-full items-center justify-between rounded-[18px] bg-black/30 px-6 py-4 text-white shadow-[0px_5px_16px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:px-8 lg:px-12">
+    <div class="relative z-10 flex w-full max-w-[1200px] flex-1 flex-col items-center gap-6">
+      <header class="mt-3 flex w-full items-center justify-between rounded-[18px] bg-black/30 px-6 py-4 text-white shadow-[0px_5px_16px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:px-8 lg:px-12">
         <div class="flex items-center gap-6 sm:gap-8 lg:gap-12">
           <div class="relative h-[64px] w-[68px] sm:h-[78px] sm:w-[82px] lg:h-[88px] lg:w-[92px]">
             <img src={ramImage} alt="99 Nights in the Forest ram icon" class="absolute inset-0 h-full w-full object-contain" />
@@ -43,37 +43,36 @@ const vectorRight = "http://localhost:3845/assets/c9fa7a33f92e6f9ca44c6ea8040a43
         </a>
       </header>
 
-      <section class="flex w-full flex-1 flex-col items-center justify-center gap-10 pb-10 pt-6 sm:gap-12 lg:gap-16">
-        <div class="relative w-full max-w-[720px]
-          aspect-[689/746]">
+      <section class="flex w-full flex-1 flex-col items-center justify-center gap-4 pb-4 pt-2 sm:gap-6 lg:gap-8">
+        <div class="relative w-full max-w-[480px] max-h-[50vh] aspect-[689/746] sm:max-w-[560px] lg:max-w-[600px]">
           <img
             src={vectorLeft}
             alt=""
             aria-hidden="true"
-            class="absolute left-[2%] top-[22%] w-[50%] opacity-70 sm:opacity-90"
+            class="absolute left-[7%] top-[18%] w-[40%] opacity-70 sm:opacity-90"
           />
           <img
             src={vectorRight}
             alt=""
             aria-hidden="true"
-            class="absolute right-[2%] top-[22%] w-[48%] opacity-70 sm:opacity-90"
+            class="absolute right-[7%] top-[18%] w-[38%] opacity-70 sm:opacity-90"
           />
           <img
             src={titleSvg}
             alt="99 Nights in the Forest"
-            class="absolute left-[3%] top-[2%] w-[94%] object-contain"
+            class="absolute left-[12%] -top-[10%] w-[74%] object-contain"
           />
           <img
             src={ramImage}
             alt="Ram silhouette"
-            class="absolute left-[6%] top-[18%] w-[88%] object-contain"
+            class="absolute left-[15%] -top-[10%] w-[66%] object-contain"
           />
         </div>
 
-        <div class="flex w-full max-w-[540px] flex-col items-center gap-6 px-4 text-white sm:gap-8">
-          <div class="text-center text-[20px] font-bold tracking-[-0.48px] sm:text-[22px] lg:text-[24px]">
-            <p class="leading-[32px] sm:leading-[38px] lg:leading-[42px]">99 Nights in the Forest Codes</p>
-            <p class="leading-[32px] sm:leading-[38px] lg:leading-[42px]">
+        <div class="flex w-full max-w-[460px] flex-col items-center gap-4 px-4 text-white sm:gap-5">
+          <div class="text-center text-[17px] font-bold tracking-[-0.48px] sm:text-[19px] lg:text-[20px]">
+            <p class="leading-[28px] sm:leading-[32px] lg:leading-[34px]">99 Nights in the Forest Codes</p>
+            <p class="leading-[28px] sm:leading-[32px] lg:leading-[34px]">
               Enter your Roblox username in the Generator page
             </p>
           </div>
