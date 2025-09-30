@@ -325,8 +325,8 @@ const loadingMessages = [
     </div>
   </main>
 
-  <script type="application/json" id="generator-items">{JSON.stringify(items)}</script>
-  <script type="application/json" id="generator-loading-messages">{JSON.stringify(loadingMessages)}</script>
+  <script type="application/json" id="generator-items" set:html={JSON.stringify(items)} />
+  <script type="application/json" id="generator-loading-messages" set:html={JSON.stringify(loadingMessages)} />
   <script type="module">
     document.addEventListener("DOMContentLoaded", () => {
       const steps = Array.from(document.querySelectorAll('[data-step]'));
