@@ -5,6 +5,7 @@ import backgroundImage from "../assets/backgroundImage.png";
 import ramImage from "../assets/ram.png";
 import vectorLeft from "../assets/vectorLeft.svg?url";
 import vectorRight from "../assets/vectorRight.svg?url";
+import homepageBanner from "../assets/homepageBanner.png";
 ---
 
 <Layout
@@ -13,7 +14,7 @@ import vectorRight from "../assets/vectorRight.svg?url";
   showNavigation={false}
   showFooter={false}
 >
-  <main class="relative flex h-screen flex-col items-center overflow-hidden bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)] px-4 py-0">
+  <main class="relative flex h-screen flex-col items-center overflow-auto bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)] bg-fixed px-4 py-0">
     <div class="pointer-events-none absolute inset-0 overflow-hidden">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#042739_0%,#01171f_55%,#000000_100%)]" />
       <div class="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 overflow-hidden blur-[5px]">
@@ -43,29 +44,8 @@ import vectorRight from "../assets/vectorRight.svg?url";
       </header>
 
       <section class="flex w-full flex-1 flex-col items-center justify-center gap-4 pb-4 pt-2 sm:gap-6 lg:gap-8">
-        <div class="relative w-full max-w-[480px] max-h-[50vh] aspect-[689/746] sm:max-w-[560px] lg:max-w-[600px]">
-          <img
-            src={vectorLeft}
-            alt=""
-            aria-hidden="true"
-            class="absolute left-[7%] top-[18%] w-[40%] opacity-70 sm:opacity-90"
-          />
-          <img
-            src={vectorRight}
-            alt=""
-            aria-hidden="true"
-            class="absolute right-[7%] top-[18%] w-[38%] opacity-70 sm:opacity-90"
-          />
-          <img
-            src={titleSvg}
-            alt="99 Nights in the Forest"
-            class="absolute left-[12%] -top-[10%] w-[74%] object-contain"
-          />
-          <img
-            src={ramImage.src}
-            alt="Ram silhouette"
-            class="absolute left-[15%] -top-[10%] w-[66%] object-contain"
-          />
+        <div class="flex items-center justify-center w-full max-w-[480px] max-h-[550px] md:max-h-[600px] lg:max-h-[800px] mx-auto sm:max-w-[560px] lg:max-w-[700px]">
+          <img src={homepageBanner.src} alt="99 Nights in the Forest banner" class="w-[689px] h-[746px] object-contain" />
         </div>
 
         <div class="flex w-full max-w-[460px] flex-col items-center gap-4 px-4 text-white sm:gap-5">
@@ -84,5 +64,6 @@ import vectorRight from "../assets/vectorRight.svg?url";
         </div>
       </section>
     </div>
+    <div class="absolute bottom-0 left-0 w-full h-[300px] bg-gradient-to-t from-black to-transparent"></div>
   </main>
 </Layout>
