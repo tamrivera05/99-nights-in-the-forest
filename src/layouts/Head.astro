@@ -9,37 +9,40 @@ interface Props {
 }
 
 const { title, description }: Props = Astro.props;
+const metaDescription =
+  description ??
+  "Unlock exclusive rewards in 99 Nights in the Forest! Claim free diamonds, weapons, and tools to enhance your survival experience. Updated daily!";
 ---
 
 <head>
   <SEO
     title={title}
-    titleTemplate="%s | TimBuilding Web Designs"
-    description={description}
+    titleTemplate="%s | 99 Nights in the Forest Free Diamonds"
+    description={metaDescription}
     charset="UTF-8"
     openGraph={{
       basic: {
         // OG title should never be the same as the page title
-        title: "₱0 down, ₱3,500 per month website",
+        title: "99 Nights in the Forest - Claim Free Items",
         type: "website",
         image: `${import.meta.env.SITE}/og-image.png`,
         url: `${import.meta.env.SITE}`,
       },
       optional: {
-        description: "We build websites for small businesses",
+        description: metaDescription,
       },
     }}
     twitter={{
       card: "summary_large_image",
-      title: "₱0 down, ₱3,500 per month website",
-      description: "We build websites for small businesses",
+      title: "99 Nights in the Forest - Claim Free Items",
+      description: metaDescription,
       image: `${import.meta.env.SITE}/og-image.png`,
     }}
     extend={{
       link: [
         {
           rel: "icon",
-          href: "/favicon.svg",
+          href: "/favicon.ico",
         },
         {
           rel: "sitemap",
@@ -82,10 +85,10 @@ const { title, description }: Props = Astro.props;
     config={[
       {
         src: [],
-        name: "Inter",
+        name: "Lexend",
         // Google Fonts URL
         googleFontsURL:
-          "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+          "https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap",
         preload: true,
         display: "swap",
         selector: "body",
@@ -104,15 +107,6 @@ const { title, description }: Props = Astro.props;
       },
     ]}
   />
-  <script>
-    // Dark mode toggle
-    document.documentElement.classList.toggle(
-      "dark",
-      localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches),
-    );
-  </script>
   <script>
     // Intersection observer for animations
     import { Observer } from "tailwindcss-intersect";
