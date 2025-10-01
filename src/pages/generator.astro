@@ -6,6 +6,7 @@ import bandage from "../assets/Bandage.png";
 import diamonds from "../assets/Diamonds.png";
 import hammer from "../assets/Hammer.png";
 import raygun from "../assets/Raygun.png";
+import bloodDrip from "../assets/bloodDrip.gif";
 
 const items = [
   {
@@ -96,7 +97,7 @@ const loadingMessages = [
 
       <section class="flex w-full flex-1 flex-col items-center gap-6 text-white">
         <div class="relative flex w-full max-w-[980px] flex-col items-center gap-6 rounded-[20px] bg-black/45 px-6 py-8 shadow-[0_12px_28px_rgba(0,0,0,0.45)] backdrop-blur-lg sm:px-10 sm:py-10">
-          <div class="flex flex-col items-center gap-2 text-center">
+          <div data-header class="flex flex-col items-center gap-2 text-center">
             <h1 class="text-[36px] font-bold tracking-[-0.48px] text-[#950606] sm:text-[40px]">Get Free Items</h1>
             <p class="max-w-[540px] text-[18px] font-semibold tracking-[-0.36px] text-white/85">
               Claim weapons, tools, and diamonds for survival.
@@ -232,15 +233,15 @@ const loadingMessages = [
 
               <div data-step="4" class="hidden flex-col items-center gap-8">
                 <div class="flex flex-col items-center gap-4 text-center">
-                  <div class="relative flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-black/40">
-                    <div class="h-12 w-12 animate-pulse rounded-full bg-[#950606]/70" />
-                  </div>
                   <p
-                    data-loading-text
-                    class="min-h-[60px] max-w-[440px] text-[22px] font-semibold tracking-[-0.4px] text-white"
+                  data-loading-text
+                  class="min-h-[60px] max-w-[440px] text-[22px] font-semibold tracking-[-0.4px] text-white"
                   >
-                    Initiating generator...
-                  </p>
+                  Initiating generator...
+                </p>
+                <div class="relative flex h-60 w-60 items-center justify-center">
+                  <img src={bloodDrip.src} alt="Blood Dripping GIF"/>
+                </div>
                   <p class="max-w-[460px] text-center text-[14px] text-white/60">
                     Codes may take a few seconds to generate. Please wait patiently while we conjure your reward.
                   </p>
@@ -413,6 +414,36 @@ const loadingMessages = [
           }
           button.setAttribute('aria-pressed', String(isSelected));
         });
+      }
+
+      function showStep(step) {
+        currentStep = step;
+
+        // Hide or show the header based on the current step
+        const header = document.querySelector('[data-header]');
+        if (header) {
+          if (step === 4 || step === 5) {
+            header.classList.add('hidden');
+          } else {
+            header.classList.remove('hidden');
+          }
+        }
+
+        steps.forEach((section) => {
+          const stepNumber = Number(section.dataset.step);
+          if (stepNumber === step) {
+            section.classList.remove('hidden');
+            section.classList.add('flex');
+            if (stepNumber === 4) {
+              startLoadingSequence();
+            }
+          } else {
+            section.classList.add('hidden');
+            section.classList.remove('flex');
+          }
+        });
+
+        updateProgress(step);
       }
 
       function populateReview() {
