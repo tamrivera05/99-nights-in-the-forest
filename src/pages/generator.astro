@@ -1,6 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import backgroundImage from "../assets/backgroundImage.png";
+import chainsaw from "../assets/Chainsaw.png";
+import bandage from "../assets/Bandage.png";
+import diamonds from "../assets/Diamonds.png";
+import hammer from "../assets/Hammer.png";
+import raygun from "../assets/Raygun.png";
 
 const items = [
   {
@@ -11,6 +16,7 @@ const items = [
     categoryBackground: "#05506e",
     description:
       "Allows players to cut trees and eliminate threats quickly. It takes 2 hits to fell a tree and can chop big trees in 25+ hits.",
+    image: chainsaw
   },
   {
     id: "raygun",
@@ -20,6 +26,7 @@ const items = [
     categoryBackground: "#981c1c",
     description:
       "Fires hit-scan projectiles that deal heavy damage. Powered by Alien Tech Energy unlike other ranged weapons.",
+    image: raygun
   },
   {
     id: "diamonds5k",
@@ -29,6 +36,7 @@ const items = [
     categoryBackground: "#ba86ff",
     description:
       "A massive amount of diamonds that lets you gear up faster and stay ahead in the forest.",
+    image: diamonds
   },
   {
     id: "diamonds10k",
@@ -38,6 +46,7 @@ const items = [
     categoryBackground: "#ba86ff",
     description:
       "Enough currency to unlock the best items in a single run. Use it wisely.",
+    image: diamonds
   },
   {
     id: "bandage",
@@ -47,6 +56,7 @@ const items = [
     categoryBackground: "#05506e",
     description:
       "Quickly recover health or help fallen teammates. Essential for late-night encounters.",
+    image: bandage
   },
   {
     id: "hammer",
@@ -56,6 +66,7 @@ const items = [
     categoryBackground: "#05506e",
     description:
       "Move structures around camp and collect decorations scattered across the map effortlessly.",
+    image: hammer
   },
 ];
 
@@ -114,7 +125,7 @@ const loadingMessages = [
                       class="group relative flex h-full flex-col gap-4 rounded-[12px] border border-white/15 bg-[rgba(0,0,0,0.65)] p-5 text-left shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:border-[#950606] hover:shadow-[0_12px_26px_rgba(149,6,6,0.25)] focus:outline-none"
                     >
                       <div class="relative flex h-36 w-full items-center justify-center rounded-[10px] bg-[radial-gradient(circle_at_center,rgba(149,6,6,0.45),rgba(0,0,0,0.9))] text-[42px] font-black uppercase text-white/20">
-                        <span class="translate-y-1 text-[48px] tracking-[0.08em] text-white/40">{item.name.slice(0, 1)}</span>
+                        <img src={item.image?.src} alt={item.name} class="h-full w-auto object-contain" />
                       </div>
                       <div class="flex flex-col gap-3">
                         <div class="flex items-center justify-between gap-3">
