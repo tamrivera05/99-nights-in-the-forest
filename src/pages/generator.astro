@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import titleSvg from "../assets/Text.svg?url";
 import backgroundImage from "../assets/backgroundImage.png";
-import ramImage from "../assets/ram.png";
 
 const items = [
   {
@@ -72,7 +70,6 @@ const loadingMessages = [
 <Layout
   title="Roblox Item Generator — 99 Nights in the Forest"
   description="Claim Roblox items for survival in 99 Nights in the Forest. Choose an item, enter your username, and get a free code."
-  showNavigation={false}
   showFooter={false}
 >
   <main class="relative flex min-h-screen flex-col items-center overflow-hidden bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)] px-4 py-0">
@@ -85,24 +82,6 @@ const loadingMessages = [
     </div>
 
     <div class="relative z-10 flex w-full max-w-[1200px] flex-1 flex-col items-center gap-6 pb-12">
-      <header class="mt-6 flex w-full items-center justify-between rounded-[18px] bg-black/30 px-6 py-4 text-white shadow-[0px_5px_16px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:px-8 lg:px-12">
-        <div class="flex items-center gap-6 sm:gap-8 lg:gap-12">
-          <div class="relative h-[64px] w-[68px] sm:h-[78px] sm:w-[82px] lg:h-[88px] lg:w-[92px]">
-            <img src={ramImage.src} alt="99 Nights in the Forest ram icon" class="absolute inset-0 h-full w-full object-contain" />
-          </div>
-          <img src={titleSvg} alt="99 Nights in the Forest" class="h-[44px] w-auto object-contain sm:h-[56px] lg:h-[64px]" />
-        </div>
-        <nav class="hidden items-center gap-[24px] text-[16px] font-bold tracking-[-0.32px] sm:flex lg:gap-[32px]">
-          <a href="/" class="leading-[32px] transition-colors hover:text-[#ff5c5c]">Home</a>
-          <a href="/generator" class="leading-[32px] text-[#ff5c5c] transition-colors hover:text-white">Generator</a>
-        </nav>
-        <a
-          href="/generator"
-          class="rounded-[8px] bg-[#950606] px-4 py-2 text-[14px] font-semibold text-white shadow-[0px_5px_10.8px_rgba(0,0,0,0.25)] sm:hidden"
-        >
-          Generator
-        </a>
-      </header>
 
       <section class="flex w-full flex-1 flex-col items-center gap-6 text-white">
         <div class="relative flex w-full max-w-[980px] flex-col items-center gap-6 rounded-[20px] bg-black/45 px-6 py-8 shadow-[0_12px_28px_rgba(0,0,0,0.45)] backdrop-blur-lg sm:px-10 sm:py-10">
