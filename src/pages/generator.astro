@@ -98,8 +98,8 @@ const loadingMessages = [
       <section class="flex w-full flex-1 flex-col items-center gap-6 text-white">
         <div class="relative flex w-full max-w-[980px] flex-col items-center gap-6 rounded-[20px] bg-black/45 px-6 py-8 shadow-[0_12px_28px_rgba(0,0,0,0.45)] backdrop-blur-lg sm:px-10 sm:py-10">
           <div data-header class="flex flex-col items-center gap-2 text-center">
-            <h1 class="text-[36px] font-bold tracking-[-0.48px] text-[#950606] sm:text-[40px]">Get Free Items</h1>
-            <p class="max-w-[540px] text-[18px] font-semibold tracking-[-0.36px] text-white/85">
+            <h1 class="text-[36px] font-extrabold tracking-[-0.48px] text-[#950606] sm:text-[40px]">Get Free Items</h1>
+            <p class="max-w-[540px] text-[18px] font-bold tracking-[-0.36px] text-white/85">
               Claim weapons, tools, and diamonds for survival.
             </p>
           </div>
@@ -130,7 +130,7 @@ const loadingMessages = [
                       </div>
                       <div class="flex flex-col gap-3">
                         <div class="flex items-center justify-between gap-3">
-                          <h3 class="text-[20px] font-semibold tracking-[-0.4px] text-white">{item.name}</h3>
+                          <h3 class="text-[20px] font-bold tracking-[-0.4px] text-white">{item.name}</h3>
                           <span
                             class="rounded-[8px] px-3 py-1 text-[12px] font-semibold tracking-[-0.24px]"
                             style={{
@@ -144,7 +144,7 @@ const loadingMessages = [
                         <p class="text-[13px] leading-[1.5] text-white/70">{item.description}</p>
                       </div>
                       <div class="mt-auto flex items-center justify-center">
-                        <span class="flex w-full items-center justify-center rounded-[8px] bg-[#950606] px-4 py-[10px] text-[13px] font-semibold tracking-[0.04em] text-white transition-colors group-hover:bg-[#b00a0a]">
+                        <span class="flex w-full items-center justify-center rounded-[8px] bg-[#950606] px-4 py-[10px] text-[13px] font-bold tracking-[0.04em] text-white transition-colors group-hover:bg-[#b00a0a] cursor-pointer">
                           Select Item
                         </span>
                       </div>
@@ -197,7 +197,7 @@ const loadingMessages = [
                         <p class="text-[15px] text-white/60">Selected Item</p>
                         <p data-review-item class="text-[20px] font-semibold tracking-[-0.4px] text-white">—</p>
                       </div>
-                      <span data-review-category class="rounded-[8px] px-3 py-1 text-[12px] font-semibold tracking-[-0.24px] text-white/70">—</span>
+                      <span data-review-category class="rounded-[8px] px-3 py-1 text-[12px] font-semibold tracking-[-0.24px] text-white/70 w-fit">—</span>
                     </div>
                     <p data-review-description class="text-[13px] text-white/60">—</p>
                   </div>
@@ -277,7 +277,7 @@ const loadingMessages = [
                   <div class="flex flex-col gap-1">
                     <p class="text-[15px] text-white/60">Your Code</p>
                     <div class="flex flex-col gap-3 rounded-[10px] border border-[#950606] bg-black/60 px-4 py-5">
-                      <p data-generated-code class="text-center text-[32px] font-bold tracking-[0.12em] text-white">
+                      <p data-generated-code class="text-center text-xl lg:text-[32px] font-bold tracking-[0.12em] text-white">
                         —
                       </p>
                       <button
