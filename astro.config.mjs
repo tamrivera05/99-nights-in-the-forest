@@ -14,5 +14,13 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   // robotsTxt must be the last item in the array
-  integrations: [icon(), sitemap(), alpinejs(), robotsTxt()],
+  integrations: [
+    icon(),
+    sitemap({
+      changefreq: "daily",
+      priority: 0.7,
+    }),
+    alpinejs(),
+    robotsTxt(),
+  ],
 });

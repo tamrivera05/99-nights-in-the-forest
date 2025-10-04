@@ -1,0 +1,198 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import chainsaw from "../../assets/Chainsaw.png";
+import backgroundImage from "../../assets/backgroundImage.png";
+import { Schema } from "astro-seo-schema";
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Items", href: "/items" },
+  { name: "Chainsaw", href: "/items/chainsaw" }
+];
+---
+
+<Layout
+  title="Free Chainsaw in 99 Nights in the Forest"
+  description="Get a free chainsaw for 99 Nights in the Forest Roblox game. Learn how to obtain this powerful tool for tree cutting and defense. Instant delivery to your account."
+>
+  <main class="relative min-h-screen bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)]">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#042739_0%,#01171f_55%,#000000_100%)]" />
+      <div class="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 overflow-hidden blur-[5px]">
+        <img src={backgroundImage.src} alt="" class="h-full w-full object-cover" />
+      </div>
+      <div class="absolute inset-0 bg-black/35" />
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-8">
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-8">
+        <ol class="flex items-center space-x-2 text-white/60 text-sm">
+          {breadcrumbs.map((crumb, index) => (
+            <li class="flex items-center">
+              {index > 0 && <span class="mx-2">/</span>}
+              {index === breadcrumbs.length - 1 ? (
+                <span class="text-white">{crumb.name}</span>
+              ) : (
+                <a href={crumb.href} class="hover:text-white transition-colors">{crumb.name}</a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <div class="text-white">
+          <h1 class="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+            Free Chainsaw Generator
+          </h1>
+          <div class="inline-block px-4 py-2 bg-blue-600/20 border border-blue-500 rounded-lg mb-6">
+            <span class="text-blue-400 font-semibold">TOOL</span>
+          </div>
+          <p class="text-xl text-white/80 mb-8">
+            Get a free chainsaw for 99 Nights in the Forest! This powerful tool allows you to cut trees and eliminate threats quickly.
+          </p>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span class="text-white/90">2 hits to fell a tree</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span class="text-white/90">25+ hits for big trees</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span class="text-white/90">Effective against threats</span>
+            </div>
+          </div>
+
+          <a
+            href="/generator"
+            class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 rounded-lg transition-colors"
+          >
+            Get Free Chainsaw
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class="flex justify-center">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-xl"></div>
+            <img
+              src={chainsaw.src}
+              alt="Chainsaw tool in 99 Nights in the Forest Roblox game"
+              class="relative w-full max-w-md h-auto object-contain rounded-2xl"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Information -->
+      <section class="grid lg:grid-cols-3 gap-8 mb-16">
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h2 class="text-2xl font-bold text-white mb-4">What is the Chainsaw?</h2>
+          <p class="text-white/70 leading-relaxed">
+            The Chainsaw is one of the most powerful tools in 99 Nights in the Forest. It's designed for rapid tree cutting and can also be used defensively against forest threats. Unlike regular axes, the chainsaw significantly reduces the time needed to gather wood resources.
+          </p>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h2 class="text-2xl font-bold text-white mb-4">How to Use</h2>
+          <ol class="text-white/70 space-y-2">
+            <li>1. Enter your Roblox username</li>
+            <li>2. Select Chainsaw from the tool options</li>
+            <li>3. Complete the verification process</li>
+            <li>4. Receive your chainsaw instantly</li>
+          </ol>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h2 class="text-2xl font-bold text-white mb-4">Pro Tips</h2>
+          <ul class="text-white/70 space-y-2">
+            <li>• Save chainsaw fuel for big trees</li>
+            <li>• Use as defensive weapon when needed</li>
+            <li>• Combine with other tools for efficiency</li>
+            <li>• Repair regularly to maintain performance</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Related Items -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8">Related Items</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <a href="/items/raygun" class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+            <div class="text-red-400 font-semibold mb-2">WEAPON</div>
+            <h3 class="text-xl font-bold text-white mb-2">Ray Gun</h3>
+            <p class="text-white/60">Fires hit-scan projectiles with heavy damage</p>
+          </a>
+
+          <a href="/items/diamonds" class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+            <div class="text-purple-400 font-semibold mb-2">CURRENCY</div>
+            <h3 class="text-xl font-bold text-white mb-2">Free Diamonds</h3>
+            <p class="text-white/60">Get 5,000 or 10,000 diamonds instantly</p>
+          </a>
+
+          <a href="/items/hammer" class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+            <div class="text-blue-400 font-semibold mb-2">TOOL</div>
+            <h3 class="text-xl font-bold text-white mb-2">Hammer</h3>
+            <p class="text-white/60">Essential building and repair tool</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">How long does it take to get the chainsaw?</h3>
+            <p class="text-white/70">Delivery is usually instant after completing the verification process. Most users receive their chainsaw within 5-10 minutes.</p>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">Is the chainsaw better than an axe?</h3>
+            <p class="text-white/70">Yes! The chainsaw is significantly faster, requiring only 2 hits for regular trees compared to 6-8 hits with an axe.</p>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">Can I use the chainsaw against enemies?</h3>
+            <p class="text-white/70">Absolutely! The chainsaw deals significant damage and can be used as an effective defensive weapon against forest threats.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { Schema } from "astro-seo-schema";
+</script>
+
+<Schema
+  item={{
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "Chainsaw - 99 Nights in the Forest",
+    description: "Free chainsaw tool for 99 Nights in the Forest Roblox game. Perfect for tree cutting and defense.",
+    category: "Tool",
+    brand: {
+      "@type": "Brand",
+      name: "99 Nights in the Forest"
+    },
+    offers: {
+      "@type": "Offer",
+      description: "Free chainsaw generator",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock"
+    },
+    image: `${import.meta.env.SITE}/Chainsaw.png`
+  }}
+/>

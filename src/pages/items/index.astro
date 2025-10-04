@@ -1,0 +1,283 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import chainsaw from "../../assets/Chainsaw.png";
+import raygun from "../../assets/Raygun.png";
+import diamonds from "../../assets/Diamonds.png";
+import hammer from "../../assets/Hammer.png";
+import bandage from "../../assets/Bandage.png";
+import backgroundImage from "../../assets/backgroundImage.png";
+import { Schema } from "astro-seo-schema";
+
+const items = [
+  {
+    id: "chainsaw",
+    name: "Chainsaw",
+    category: "Tool",
+    categoryColor: "#09a9e9",
+    categoryBackground: "#05506e",
+    description: "Allows players to cut trees and eliminate threats quickly. It takes 2 hits to fell a tree and can chop big trees in 25+ hits.",
+    image: chainsaw,
+    href: "/items/chainsaw"
+  },
+  {
+    id: "raygun",
+    name: "Ray Gun",
+    category: "Weapon",
+    categoryColor: "#ff5c5c",
+    categoryBackground: "#981c1c",
+    description: "Fires hit-scan projectiles that deal heavy damage. Powered by Alien Tech Energy unlike other ranged weapons.",
+    image: raygun,
+    href: "/items/raygun"
+  },
+  {
+    id: "diamonds5k",
+    name: "5000 Diamonds",
+    category: "Diamonds",
+    categoryColor: "#5c12bd",
+    categoryBackground: "#ba86ff",
+    description: "A massive amount of diamonds that lets you gear up faster and stay ahead in the forest.",
+    image: diamonds,
+    href: "/items/diamonds"
+  },
+  {
+    id: "diamonds10k",
+    name: "10000 Diamonds",
+    category: "Diamonds",
+    categoryColor: "#5c12bd",
+    categoryBackground: "#ba86ff",
+    description: "Enough currency to unlock the best items in a single run. Use it wisely.",
+    image: diamonds,
+    href: "/items/diamonds"
+  },
+  {
+    id: "hammer",
+    name: "Hammer",
+    category: "Tool",
+    categoryColor: "#09a9e9",
+    categoryBackground: "#05506e",
+    description: "Essential building and repair tool. Perfect for constructing defensive structures and fixing damaged equipment.",
+    image: hammer,
+    href: "/items/hammer"
+  },
+  {
+    id: "bandage",
+    name: "Bandage",
+    category: "Medical",
+    categoryColor: "#10b981",
+    categoryBackground: "#064e3b",
+    description: "Quick healing item that restores health and allows you to continue surviving in the dangerous forest.",
+    image: bandage,
+    href: "/items/bandage"
+  }
+];
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Items", href: "/items" }
+];
+
+const groupedItems = items.reduce((acc, item) => {
+  if (!acc[item.category]) {
+    acc[item.category] = [];
+  }
+  acc[item.category].push(item);
+  return acc;
+}, {});
+---
+
+<Layout
+  title="All Items - 99 Nights in the Forest"
+  description="Browse all available items for 99 Nights in the Forest. Get free weapons, tools, diamonds, and medical supplies to enhance your survival experience."
+>
+  <main class="relative min-h-screen bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)]">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#042739_0%,#01171f_55%,#000000_100%)]" />
+      <div class="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 overflow-hidden blur-[5px]">
+        <img src={backgroundImage.src} alt="" class="h-full w-full object-cover" />
+      </div>
+      <div class="absolute inset-0 bg-black/35" />
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-8">
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-8">
+        <ol class="flex items-center space-x-2 text-white/60 text-sm">
+          {breadcrumbs.map((crumb, index) => (
+            <li class="flex items-center">
+              {index > 0 && <span class="mx-2">/</span>}
+              {index === breadcrumbs.length - 1 ? (
+                <span class="text-white">{crumb.name}</span>
+              ) : (
+                <a href={crumb.href} class="hover:text-white transition-colors">{crumb.name}</a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+          All Items
+        </h1>
+        <p class="text-xl text-white/80 max-w-3xl mx-auto">
+          Browse our complete collection of free items for 99 Nights in the Forest. From powerful weapons to essential tools, we have everything you need to survive.
+        </p>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+          <div class="text-3xl font-bold text-red-400 mb-2">2</div>
+          <div class="text-white/80">Weapons</div>
+        </div>
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+          <div class="text-3xl font-bold text-blue-400 mb-2">2</div>
+          <div class="text-white/80">Tools</div>
+        </div>
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+          <div class="text-3xl font-bold text-purple-400 mb-2">2</div>
+          <div class="text-white/80">Diamond Packs</div>
+        </div>
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+          <div class="text-3xl font-bold text-green-400 mb-2">1</div>
+          <div class="text-white/80">Medical</div>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      {Object.entries(groupedItems).map(([category, categoryItems]) => (
+        <section class="mb-16">
+          <div class="flex items-center gap-4 mb-8">
+            <div
+              class="px-4 py-2 rounded-lg font-semibold"
+              style={`background-color: ${categoryItems[0].categoryBackground}; color: ${categoryItems[0].categoryColor}`}
+            >
+              {category}
+            </div>
+            <h2 class="text-3xl font-bold text-white">
+              {category === "Diamonds" ? "Diamond Packages" : category}
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {categoryItems.map((item) => (
+              <a
+                href={item.href}
+                class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all hover:scale-105 group"
+              >
+                <div class="relative h-48 mb-6 flex items-center justify-center">
+                  <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg"></div>
+                  <img
+                    src={item.image.src}
+                    alt={`${item.name} - ${item.category} for 99 Nights in the Forest Roblox game`}
+                    class="relative h-full w-auto object-contain group-hover:scale-110 transition-transform"
+                    loading="lazy"
+                  />
+                </div>
+
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white">{item.name}</h3>
+                    <span
+                      class="px-2 py-1 rounded text-xs font-semibold"
+                      style={`background-color: ${item.categoryBackground}; color: ${item.categoryColor}`}
+                    >
+                      {item.category}
+                    </span>
+                  </div>
+
+                  <p class="text-white/60 text-sm leading-relaxed">{item.description}</p>
+
+                  <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                    <span class="text-red-400 font-semibold text-sm">FREE</span>
+                    <div class="flex items-center gap-2 text-white/60 group-hover:text-white transition-colors">
+                      <span class="text-sm">Get Item</span>
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <!-- CTA Section -->
+      <section class="text-center mb-16">
+        <div class="bg-gradient-to-r from-red-600/20 to-purple-600/20 backdrop-blur-sm rounded-2xl p-12 border border-white/10">
+          <h2 class="text-3xl font-bold text-white mb-4">Ready to Get Your Items?</h2>
+          <p class="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+            Use our generator to instantly receive any of these items directly to your Roblox account. No waiting, no hassle!
+          </p>
+          <a
+            href="/generator"
+            class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
+          >
+            Use Generator Now
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
+        <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">Are all items really free?</h3>
+            <p class="text-white/70">Yes! All items on our generator are completely free. You just need to complete a simple verification process.</p>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">How long does delivery take?</h3>
+            <p class="text-white/70">Most items are delivered instantly after verification. The entire process usually takes 5-10 minutes.</p>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">Can I get multiple items?</h3>
+            <p class="text-white/70">Absolutely! You can use our generator multiple times to get different items or the same item again.</p>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">Is it safe for my account?</h3>
+            <p class="text-white/70">Yes! Our generator uses safe methods that won't risk your Roblox account. Thousands of users use it daily.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { Schema } from "astro-seo-schema";
+</script>
+
+<Schema
+  item={{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "All Items - 99 Nights in the Forest",
+    description: "Complete collection of free items for 99 Nights in the Forest Roblox game including weapons, tools, diamonds, and medical supplies.",
+    url: `${import.meta.env.SITE}/items`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: items.length,
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Product",
+          name: item.name,
+          description: item.description,
+          category: item.category,
+          image: `${import.meta.env.SITE}/${item.id}.png`
+        }
+      }))
+    }
+  }}
+/>

@@ -1,0 +1,281 @@
+---
+import Layout from "../layouts/Layout.astro";
+import backgroundImage from "../assets/backgroundImage.png";
+import { Schema } from "astro-seo-schema";
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" }
+];
+---
+
+<Layout
+  title="About - 99 Nights in the Forest Free Items"
+  description="Learn about our mission to provide free items and diamonds for 99 Nights in the Forest Roblox game. Helping players survive all 99 nights with the best equipment."
+>
+  <main class="relative min-h-screen bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)]">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#042739_0%,#01171f_55%,#000000_100%)]" />
+      <div class="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 overflow-hidden blur-[5px]">
+        <img src={backgroundImage.src} alt="" class="h-full w-full object-cover" />
+      </div>
+      <div class="absolute inset-0 bg-black/35" />
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-8">
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-8">
+        <ol class="flex items-center space-x-2 text-white/60 text-sm">
+          {breadcrumbs.map((crumb, index) => (
+            <li class="flex items-center">
+              {index > 0 && <span class="mx-2">/</span>}
+              {index === breadcrumbs.length - 1 ? (
+                <span class="text-white">{crumb.name}</span>
+              ) : (
+                <a href={crumb.href} class="hover:text-white transition-colors">{crumb.name}</a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+          About 99 Nights Free Items
+        </h1>
+        <p class="text-xl text-white/80 max-w-3xl mx-auto">
+          Your trusted source for free items, weapons, tools, and diamonds in 99 Nights in the Forest. We're here to help every player survive the forest and complete all 99 nights.
+        </p>
+      </div>
+
+      <!-- Mission Section -->
+      <section class="mb-16">
+        <div class="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <h2 class="text-3xl font-bold text-white mb-6 text-center">🎯 Our Mission</h2>
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <p class="text-white/80 leading-relaxed mb-4">
+                We believe that every player deserves the chance to experience 99 Nights in the Forest to its fullest. Our mission is to provide free, safe, and instant access to essential items that help players survive and thrive in this challenging Roblox survival game.
+              </p>
+              <p class="text-white/80 leading-relaxed">
+                Whether you're a beginner just starting your journey or an experienced player looking to optimize your survival strategy, our generator ensures you have the tools you need to conquer all 99 nights.
+              </p>
+            </div>
+            <div class="text-center">
+              <div class="text-6xl mb-4">🌲</div>
+              <p class="text-white/60 italic">"Helping players survive the forest, one free item at a time."</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- What We Offer -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">What We Offer</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+            <div class="text-4xl mb-4">⚔️</div>
+            <h3 class="text-xl font-bold text-white mb-2">Free Weapons</h3>
+            <p class="text-white/60 text-sm">Advanced weapons like the Ray Gun to defend against forest threats</p>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+            <div class="text-4xl mb-4">🔧</div>
+            <h3 class="text-xl font-bold text-white mb-2">Essential Tools</h3>
+            <p class="text-white/60 text-sm">Tools like Chainsaws and Hammers for resource gathering and building</p>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+            <div class="text-4xl mb-4">💎</div>
+            <h3 class="text-xl font-bold text-white mb-2">Free Diamonds</h3>
+            <p class="text-white/60 text-sm">Premium currency packages of 5,000 or 10,000 diamonds</p>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+            <div class="text-4xl mb-4">🩹</div>
+            <h3 class="text-xl font-bold text-white mb-2">Medical Supplies</h3>
+            <p class="text-white/60 text-sm">Healing items like Bandages to keep you alive during tough nights</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Us -->
+      <section class="grid lg:grid-cols-2 gap-8 mb-16">
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+          <h2 class="text-2xl font-bold text-white mb-6">Why Choose Us?</h2>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-1">100% Free</h3>
+                <p class="text-white/70 text-sm">All items and diamonds are completely free with no hidden costs</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-1">Instant Delivery</h3>
+                <p class="text-white/70 text-sm">Receive your items within minutes after verification</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-1">Safe & Secure</h3>
+                <p class="text-white/70 text-sm">Our methods are completely safe for your Roblox account</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-1">24/7 Availability</h3>
+                <p class="text-white/70 text-sm">Access our generator anytime, anywhere</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+          <h2 class="text-2xl font-bold text-white mb-6">Community Impact</h2>
+          <div class="space-y-4">
+            <div class="text-center mb-6">
+              <div class="text-4xl font-bold text-green-400 mb-2">50,000+</div>
+              <p class="text-white/80">Happy Players</p>
+            </div>
+            <div class="text-center mb-6">
+              <div class="text-4xl font-bold text-blue-400 mb-2">1M+</div>
+              <p class="text-white/80">Items Generated</p>
+            </div>
+            <div class="text-center mb-6">
+              <div class="text-4xl font-bold text-purple-400 mb-2">99%</div>
+              <p class="text-white/80">Success Rate</p>
+            </div>
+            <p class="text-white/70 text-center italic">
+              "Join thousands of players who have already enhanced their 99 Nights in the Forest experience with our free items!"
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">How It Works</h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-white">1</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Select Item</h3>
+            <p class="text-white/60 text-sm">Choose from our wide selection of weapons, tools, and diamonds</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-white">2</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Enter Username</h3>
+            <p class="text-white/60 text-sm">Provide your Roblox username for delivery</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-white">3</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Complete Verification</h3>
+            <p class="text-white/60 text-sm">Quick verification process to ensure security</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-white">4</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Receive Items</h3>
+            <p class="text-white/60 text-sm">Get your items instantly and start playing!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="text-center mb-16">
+        <div class="bg-gradient-to-r from-red-600/20 to-purple-600/20 backdrop-blur-sm rounded-2xl p-12 border border-white/10">
+          <h2 class="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
+          <p class="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+            Join thousands of players who are already enjoying free items and dominating 99 Nights in the Forest!
+          </p>
+          <a
+            href="/generator"
+            class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
+          >
+            Get Free Items Now
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- Contact/Support -->
+      <section class="text-center">
+        <h2 class="text-2xl font-bold text-white mb-6">Need Help?</h2>
+        <p class="text-white/70 mb-8">
+          Check out our comprehensive guides for tips, strategies, and detailed information about all items.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/guides"
+            class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg transition-colors"
+          >
+            Browse Guides
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </a>
+          <a
+            href="/items"
+            class="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-3 rounded-lg transition-colors"
+          >
+            View All Items
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+            </svg>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+
+
+<Schema
+  item={{
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About - 99 Nights in the Forest Free Items",
+    description: "Learn about our mission to provide free items and diamonds for 99 Nights in the Forest Roblox game",
+    url: `${import.meta.env.SITE}/about`,
+    mainEntity: {
+      "@type": "Organization",
+      name: "99 Nights in the Forest Free Items",
+      description: "Providing free items, weapons, tools, and diamonds for 99 Nights in the Forest Roblox game",
+      url: import.meta.env.SITE,
+      sameAs: [],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        availableLanguage: "English"
+      }
+    }
+  }}
+/>

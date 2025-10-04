@@ -1,0 +1,236 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import diamonds from "../../assets/Diamonds.png";
+import backgroundImage from "../../assets/backgroundImage.png";
+import { Schema } from "astro-seo-schema";
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Items", href: "/items" },
+  { name: "Free Diamonds", href: "/items/diamonds" }
+];
+---
+
+<Layout
+  title="Free Diamonds in 99 Nights in the Forest"
+  description="Get free diamonds for 99 Nights in the Forest Roblox game. Choose from 5,000 or 10,000 diamonds packages. Instant delivery to your account. Updated daily!"
+>
+  <main class="relative min-h-screen bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)]">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#042739_0%,#01171f_55%,#000000_100%)]" />
+      <div class="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 overflow-hidden blur-[5px]">
+        <img src={backgroundImage.src} alt="" class="h-full w-full object-cover" />
+      </div>
+      <div class="absolute inset-0 bg-black/35" />
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-8">
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-8">
+        <ol class="flex items-center space-x-2 text-white/60 text-sm">
+          {breadcrumbs.map((crumb, index) => (
+            <li class="flex items-center">
+              {index > 0 && <span class="mx-2">/</span>}
+              {index === breadcrumbs.length - 1 ? (
+                <span class="text-white">{crumb.name}</span>
+              ) : (
+                <a href={crumb.href} class="hover:text-white transition-colors">{crumb.name}</a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-500 to-purple-600 bg-clip-text text-transparent">
+          Free Diamonds Generator
+        </h1>
+        <div class="inline-block px-4 py-2 bg-purple-600/20 border border-purple-500 rounded-lg mb-6">
+          <span class="text-purple-400 font-semibold">CURRENCY</span>
+        </div>
+        <p class="text-xl text-white/80 mb-12 max-w-3xl mx-auto">
+          Get free diamonds for 99 Nights in the Forest! Use diamonds to purchase the best items, upgrades, and resources to survive all 99 nights.
+        </p>
+
+        <!-- Diamond Packages -->
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
+          <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all hover:scale-105">
+            <div class="text-4xl font-bold text-purple-400 mb-4">5,000</div>
+            <div class="text-xl text-white font-semibold mb-4">Diamonds</div>
+            <p class="text-white/70 mb-6">Perfect starter pack to gear up quickly</p>
+            <ul class="text-white/60 space-y-2 mb-6">
+              <li>• Buy basic tools and weapons</li>
+              <li>• Purchase essential resources</li>
+              <li>• Upgrade your base defenses</li>
+            </ul>
+            <a
+              href="/generator?package=diamonds5k"
+              class="inline-block w-full bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-3 rounded-lg transition-colors"
+            >
+              Get 5,000 Diamonds
+            </a>
+          </div>
+
+          <div class="bg-gradient-to-br from-purple-600/20 to-pink-600/20 backdrop-blur-sm rounded-2xl p-8 border border-purple-500 hover:from-purple-600/30 hover:to-pink-600/30 transition-all hover:scale-105 relative">
+            <div class="absolute -top-3 -right-3 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">
+              POPULAR
+            </div>
+            <div class="text-4xl font-bold text-purple-400 mb-4">10,000</div>
+            <div class="text-xl text-white font-semibold mb-4">Diamonds</div>
+            <p class="text-white/70 mb-6">Ultimate package for the best items</p>
+            <ul class="text-white/60 space-y-2 mb-6">
+              <li>• Unlock premium weapons</li>
+              <li>• Buy the best armor and tools</li>
+              <li>• Maximize your survival chances</li>
+            </ul>
+            <a
+              href="/generator?package=diamonds10k"
+              class="inline-block w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-6 py-3 rounded-lg transition-all"
+            >
+              Get 10,000 Diamonds
+            </a>
+          </div>
+        </div>
+
+        <!-- Diamond Visual -->
+        <div class="flex justify-center mb-16">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-2xl blur-2xl"></div>
+            <img
+              src={diamonds.src}
+              alt="Diamonds currency in 99 Nights in the Forest Roblox game"
+              class="relative w-full max-w-md h-auto object-contain"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Information -->
+      <section class="grid lg:grid-cols-3 gap-8 mb-16">
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h2 class="text-2xl font-bold text-white mb-4">Why You Need Diamonds</h2>
+          <p class="text-white/70 leading-relaxed">
+            Diamonds are the premium currency in 99 Nights in the Forest. They allow you to purchase exclusive items, upgrade your equipment, and gain advantages that help you survive longer in the dangerous forest environment.
+          </p>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h2 class="text-2xl font-bold text-white mb-4">What to Buy</h2>
+          <ul class="text-white/70 space-y-2">
+            <li>• Premium weapons like Ray Gun</li>
+            <li>• Advanced tools (Chainsaw, Hammer)</li>
+            <li>• Protective armor and gear</li>
+            <li>• Base building materials</li>
+            <li>• Healing items and supplies</li>
+          </ul>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h2 class="text-2xl font-bold text-white mb-4">Pro Tips</h2>
+          <ul class="text-white/70 space-y-2">
+            <li>• Save diamonds for essential items</li>
+            <li>• Buy weapons before tools</li>
+            <li>• Invest in good armor early</li>
+            <li>• Keep emergency diamonds for repairs</li>
+            <li>• Look for special diamond sales</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Related Items -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8">Items You Can Buy With Diamonds</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <a href="/items/raygun" class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+            <div class="text-red-400 font-semibold mb-2">WEAPON</div>
+            <h3 class="text-xl font-bold text-white mb-2">Ray Gun</h3>
+            <p class="text-white/60">Advanced alien tech weapon</p>
+            <div class="text-purple-400 text-sm mt-2">💎 2,500 diamonds</div>
+          </a>
+
+          <a href="/items/chainsaw" class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+            <div class="text-blue-400 font-semibold mb-2">TOOL</div>
+            <h3 class="text-xl font-bold text-white mb-2">Chainsaw</h3>
+            <p class="text-white/60">Rapid tree cutting tool</p>
+            <div class="text-purple-400 text-sm mt-2">💎 1,800 diamonds</div>
+          </a>
+
+          <a href="/items/hammer" class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+            <div class="text-blue-400 font-semibold mb-2">TOOL</div>
+            <h3 class="text-xl font-bold text-white mb-2">Hammer</h3>
+            <p class="text-white/60">Essential building tool</p>
+            <div class="text-purple-400 text-sm mt-2">💎 1,200 diamonds</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">How long does diamond delivery take?</h3>
+            <p class="text-white/70">Diamond delivery is usually instant after completing the verification process. Most users receive their diamonds within 5-10 minutes.</p>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">Are the diamonds permanent?</h3>
+            <p class="text-white/70">Yes! Once you receive the diamonds, they are permanently added to your account and won't expire or disappear.</p>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">Can I get diamonds multiple times?</h3>
+            <p class="text-white/70">Yes! You can use our generator multiple times to get more diamonds. There's no limit to how many times you can claim free diamonds.</p>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">Is it safe to use the diamond generator?</h3>
+            <p class="text-white/70">Absolutely! Our generator uses secure methods to deliver diamonds to your account without any risks to your Roblox account.</p>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">What should I spend my diamonds on first?</h3>
+            <p class="text-white/70">We recommend buying a good weapon first (like the Ray Gun), then essential tools, and finally armor and healing items for maximum survival chances.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { Schema } from "astro-seo-schema";
+</script>
+
+<Schema
+  item={{
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "Free Diamonds - 99 Nights in the Forest",
+    description: "Free diamonds currency for 99 Nights in the Forest Roblox game. Choose from 5,000 or 10,000 diamonds packages.",
+    category: "Virtual Currency",
+    brand: {
+      "@type": "Brand",
+      name: "99 Nights in the Forest"
+    },
+    offers: [
+      {
+        "@type": "Offer",
+        description: "5,000 Free Diamonds",
+        price: "0",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        description: "10,000 Free Diamonds",
+        price: "0",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock"
+      }
+    ],
+    image: `${import.meta.env.SITE}/Diamonds.png`
+  }}
+/>

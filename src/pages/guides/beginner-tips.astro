@@ -1,0 +1,281 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import backgroundImage from "../../assets/backgroundImage.png";
+import { Schema } from "astro-seo-schema";
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Guides", href: "/guides" },
+  { name: "Beginner Tips", href: "/guides/beginner-tips" }
+];
+
+const tips = [
+  {
+    title: "Start with the Right Items",
+    description: "Begin by getting a good weapon and basic tools. The Ray Gun is excellent for long-range defense, while a Chainsaw will help you gather resources quickly.",
+    icon: "🎯"
+  },
+  {
+    title: "Build a Strong Base",
+    description: "Use your Hammer to construct defensive structures early. A well-built base can protect you from most forest threats during the night.",
+    icon: "🏗️"
+  },
+  {
+    title: "Manage Your Resources",
+    description: "Keep track of your diamonds and use them wisely. Save diamonds for essential items like weapons and healing supplies.",
+    icon: "💎"
+  },
+  {
+    title: "Learn Enemy Patterns",
+    description: "Each enemy in the forest has different attack patterns. Study them to know when to attack and when to defend.",
+    icon: "👾"
+  },
+  {
+    title: "Stay Healed",
+    description: "Always keep Bandages handy. Healing at the right time can be the difference between surviving another night or starting over.",
+    icon: "🩹"
+  },
+  {
+    title: "Explore During Day",
+    description: "Use daylight hours to explore and gather resources. The forest is much safer when you can see clearly.",
+    icon: "☀️"
+  }
+];
+---
+
+<Layout
+  title="Beginner Tips - 99 Nights in the Forest Guide"
+  description="Essential beginner tips for 99 Nights in the Forest Roblox game. Learn how to survive your first nights, build a strong base, and gather resources effectively."
+>
+  <main class="relative min-h-screen bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)]">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#042739_0%,#01171f_55%,#000000_100%)]" />
+      <div class="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 overflow-hidden blur-[5px]">
+        <img src={backgroundImage.src} alt="" class="h-full w-full object-cover" />
+      </div>
+      <div class="absolute inset-0 bg-black/35" />
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-8">
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-8">
+        <ol class="flex items-center space-x-2 text-white/60 text-sm">
+          {breadcrumbs.map((crumb, index) => (
+            <li class="flex items-center">
+              {index > 0 && <span class="mx-2">/</span>}
+              {index === breadcrumbs.length - 1 ? (
+                <span class="text-white">{crumb.name}</span>
+              ) : (
+                <a href={crumb.href} class="hover:text-white transition-colors">{crumb.name}</a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">
+          Beginner Tips
+        </h1>
+        <p class="text-xl text-white/80 max-w-3xl mx-auto">
+          New to 99 Nights in the Forest? These essential tips will help you survive your first nights and build a strong foundation for success.
+        </p>
+      </div>
+
+      <!-- Quick Start Guide -->
+      <section class="mb-16">
+        <div class="bg-gradient-to-r from-green-600/20 to-blue-600/20 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <h2 class="text-3xl font-bold text-white mb-6">🚀 Quick Start Guide</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="text-center">
+              <div class="text-4xl font-bold text-green-400 mb-2">1</div>
+              <h3 class="text-xl font-bold text-white mb-2">Get Free Items</h3>
+              <p class="text-white/70">Use our generator to get essential items like weapons and tools before starting.</p>
+              <a href="/generator" class="inline-block mt-4 bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-2 rounded-lg transition-colors">
+                Get Items Now
+              </a>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-blue-400 mb-2">2</div>
+              <h3 class="text-xl font-bold text-white mb-2">Build Your Base</h3>
+              <p class="text-white/70">Find a safe location and use your Hammer to build defensive structures.</p>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-purple-400 mb-2">3</div>
+              <h3 class="text-xl font-bold text-white mb-2">Survive & Thrive</h3>
+              <p class="text-white/70">Gather resources, defend against threats, and survive all 99 nights!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Essential Tips -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8">Essential Survival Tips</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {tips.map((tip, index) => (
+            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+              <div class="text-4xl mb-4">{tip.icon}</div>
+              <h3 class="text-xl font-bold text-white mb-3">{tip.title}</h3>
+              <p class="text-white/70 leading-relaxed">{tip.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Day/Night Strategy -->
+      <section class="grid lg:grid-cols-2 gap-8 mb-16">
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="text-3xl">☀️</div>
+            <h2 class="text-2xl font-bold text-white">Day Strategy</h2>
+          </div>
+          <ul class="space-y-3 text-white/70">
+            <li class="flex items-start gap-3">
+              <span class="text-green-400 mt-1">•</span>
+              <span>Explore the forest and gather resources</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-400 mt-1">•</span>
+              <span>Repair and upgrade your base defenses</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-400 mt-1">•</span>
+              <span>Craft new items and tools</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-400 mt-1">•</span>
+              <span>Stock up on healing supplies</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-400 mt-1">•</span>
+              <span>Plan your night defense strategy</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="text-3xl">🌙</div>
+            <h2 class="text-2xl font-bold text-white">Night Strategy</h2>
+          </div>
+          <ul class="space-y-3 text-white/70">
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 mt-1">•</span>
+              <span>Stay inside your fortified base</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 mt-1">•</span>
+              <span>Use ranged weapons like the Ray Gun</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 mt-1">•</span>
+              <span>Keep Bandages ready for healing</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 mt-1">•</span>
+              <span>Monitor your base for damage</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 mt-1">•</span>
+              <span>Conserve resources for emergencies</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Common Mistakes -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8">Common Beginner Mistakes to Avoid</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-red-600/10 backdrop-blur-sm rounded-xl p-6 border border-red-500/30">
+            <h3 class="text-xl font-bold text-red-400 mb-4">❌ Don't Do This</h3>
+            <ul class="space-y-2 text-white/70">
+              <li>• Wander far from your base at night</li>
+              <li>• Waste diamonds on unnecessary items</li>
+              <li>• Ignore base repairs and maintenance</li>
+              <li>• Fight enemies without proper weapons</li>
+              <li>• Forget to stock healing items</li>
+            </ul>
+          </div>
+          <div class="bg-green-600/10 backdrop-blur-sm rounded-xl p-6 border border-green-500/30">
+            <h3 class="text-xl font-bold text-green-400 mb-4">✅ Do This Instead</h3>
+            <ul class="space-y-2 text-white/70">
+              <li>• Plan your exploration routes carefully</li>
+              <li>• Prioritize essential items first</li>
+              <li>• Regularly check and repair your base</li>
+              <li>• Use appropriate weapons for each threat</li>
+              <li>• Always keep healing supplies ready</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Guides -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8">Related Guides</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <a href="/guides/survival-strategies" class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+            <h3 class="text-xl font-bold text-white mb-2">Advanced Survival Strategies</h3>
+            <p class="text-white/60">Learn advanced techniques for long-term survival</p>
+          </a>
+          <a href="/guides/item-guide" class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+            <h3 class="text-xl font-bold text-white mb-2">Complete Item Guide</h3>
+            <p class="text-white/60">Detailed information about all items and their uses</p>
+          </a>
+          <a href="/items" class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+            <h3 class="text-xl font-bold text-white mb-2">Get Free Items</h3>
+            <p class="text-white/60">Access our generator for free items and diamonds</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="text-center">
+        <div class="bg-gradient-to-r from-green-600/20 to-blue-600/20 backdrop-blur-sm rounded-2xl p-12 border border-white/10">
+          <h2 class="text-3xl font-bold text-white mb-4">Ready to Start Your Journey?</h2>
+          <p class="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+            Get equipped with the best items and start your survival adventure in 99 Nights in the Forest!
+          </p>
+          <a
+            href="/generator"
+            class="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
+          >
+            Get Starter Items
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { Schema } from "astro-seo-schema";
+</script>
+
+<Schema
+  item={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "Beginner Tips - 99 Nights in the Forest Guide",
+    description: "Essential beginner tips for surviving in 99 Nights in the Forest Roblox game",
+    author: {
+      "@type": "Organization",
+      name: "99 Nights in the Forest Free Items"
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "99 Nights in the Forest Free Items"
+    },
+    datePublished: "2025-06-18",
+    dateModified: "2025-06-18",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${import.meta.env.SITE}/guides/beginner-tips`
+    }
+  }}
+/>
