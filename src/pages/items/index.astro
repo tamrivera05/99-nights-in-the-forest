@@ -71,11 +71,6 @@ const items = [
   }
 ];
 
-const breadcrumbs = [
-  { name: "Home", href: "/" },
-  { name: "Items", href: "/items" }
-];
-
 const groupedItems = items.reduce((acc, item) => {
   if (!acc[item.category]) {
     acc[item.category] = [];
@@ -88,8 +83,9 @@ const groupedItems = items.reduce((acc, item) => {
 <Layout
   title="All Items - 99 Nights in the Forest"
   description="Browse all available items for 99 Nights in the Forest. Get free weapons, tools, diamonds, and medical supplies to enhance your survival experience."
+  showFooter={false}
 >
-  <main class="relative min-h-screen bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)]">
+  <main class="relative flex min-h-screen flex-col items-center justify-center overflow-auto bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)] bg-fixed px-4 pt-[110px] lg:pt-[120px]">
     <div class="pointer-events-none absolute inset-0 overflow-hidden">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#042739_0%,#01171f_55%,#000000_100%)]" />
       <div class="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 overflow-hidden blur-[5px]">
@@ -99,21 +95,6 @@ const groupedItems = items.reduce((acc, item) => {
     </div>
 
     <div class="relative z-10 container mx-auto px-4 py-8">
-      <!-- Breadcrumbs -->
-      <nav aria-label="Breadcrumb" class="mb-8">
-        <ol class="flex items-center space-x-2 text-white/60 text-sm">
-          {breadcrumbs.map((crumb, index) => (
-            <li class="flex items-center">
-              {index > 0 && <span class="mx-2">/</span>}
-              {index === breadcrumbs.length - 1 ? (
-                <span class="text-white">{crumb.name}</span>
-              ) : (
-                <a href={crumb.href} class="hover:text-white transition-colors">{crumb.name}</a>
-              )}
-            </li>
-          ))}
-        </ol>
-      </nav>
 
       <!-- Header -->
       <div class="text-center mb-16">
