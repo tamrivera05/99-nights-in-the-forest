@@ -13,6 +13,7 @@
     "@astrojs/sitemap": "^3.4.0",
     "@tailwindcss/vite": "^4.1.7",
     "@types/alpinejs": "^3.13.11",
+    "@yeskunall/astro-umami": "0.0.7",
     "alpinejs": "^3.14.9",
     "astro": "^5.7.13",
     "astro-font": "^1.1.0",

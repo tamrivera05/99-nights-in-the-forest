@@ -20,6 +20,9 @@ importers:
       '@types/alpinejs':
         specifier: ^3.13.11
         version: 3.13.11
+      '@yeskunall/astro-umami':
+        specifier: 0.0.7
+        version: 0.0.7(astro@5.7.13(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(typescript@5.8.3)(yaml@2.8.0))
       alpinejs:
         specifier: ^3.14.9
         version: 3.14.9
@@ -902,6 +905,11 @@ packages:
 
   '@vue/shared@3.1.5':
     resolution: {integrity: sha512-oJ4F3TnvpXaQwZJNF3ZK+kLPHKarDmJjJ6jyzVNDKH9md1dptjC7lWR//jrGuLdek/U6iltWxqAnYOu8gCiOvA==}
+
+  '@yeskunall/astro-umami@0.0.7':
+    resolution: {integrity: sha512-8W/At28qKyPGepwvVumgJX0VZ0F9KK4M4zNDQfUZ3iBJpAKUTAkdIXM7i7I+PFsP7rXOo/AVgcDXDOv9L03QhQ==}
+    peerDependencies:
+      astro: ^3.0.0 || ^4.0.0 || ^5.0.0
 
   acorn@8.14.1:
     resolution: {integrity: sha512-OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg==}
@@ -3434,6 +3442,10 @@ snapshots:
       '@vue/shared': 3.1.5
 
   '@vue/shared@3.1.5': {}
+
+  '@yeskunall/astro-umami@0.0.7(astro@5.7.13(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(typescript@5.8.3)(yaml@2.8.0))':
+    dependencies:
+      astro: 5.7.13(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.0)(typescript@5.8.3)(yaml@2.8.0)
 
   acorn@8.14.1: {}
 
