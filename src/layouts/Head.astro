@@ -48,6 +48,10 @@ const metaDescription =
           rel: "sitemap",
           href: "/sitemap-index.xml",
         },
+        {
+          rel: "canonical",
+          href: new URL(Astro.url.pathname, Astro.site).href,
+        },
       ],
       meta: [
         {
@@ -60,25 +64,15 @@ const metaDescription =
   <Schema
     item={{
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      name: "TimBuilding Web Designs",
-      description: "${description}",
-      priceRange: "₱3,500/month",
-      image: "${image}",
-      address: {
-        "@type": "PostalAddress",
-        addressRegion: "Philippines",
-      },
-      url: "${canonicalURL}",
-      telephone: "+63",
-      openingHours: "Mo-Fr 09:00-17:00",
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        price: "3500",
-        priceCurrency: "PHP",
-        minPrice: "3500",
-        maxPrice: "3500",
-      },
+      "@type": "WebSite",
+      name: "99 Nights in the Forest Free Diamonds",
+      description: metaDescription,
+      url: import.meta.env.SITE,
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${import.meta.env.SITE}/generator?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
     }}
   />
   <AstroFont

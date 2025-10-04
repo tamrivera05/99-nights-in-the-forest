@@ -1,0 +1,209 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import raygun from "../../assets/Raygun.png";
+import backgroundImage from "../../assets/backgroundImage.png";
+import { Schema } from "astro-seo-schema";
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Items", href: "/items" },
+  { name: "Ray Gun", href: "/items/raygun" }
+];
+---
+
+<Layout
+  title="Free Ray Gun in 99 Nights in the Forest"
+  description="Get a free ray gun for 99 Nights in the Forest Roblox game. This powerful alien tech weapon fires hit-scan projectiles with heavy damage. Instant delivery to your account."
+>
+  <main class="relative min-h-screen bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)]">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#042739_0%,#01171f_55%,#000000_100%)]" />
+      <div class="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 overflow-hidden blur-[5px]">
+        <img src={backgroundImage.src} alt="" class="h-full w-full object-cover" />
+      </div>
+      <div class="absolute inset-0 bg-black/35" />
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-8">
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-8">
+        <ol class="flex items-center space-x-2 text-white/60 text-sm">
+          {breadcrumbs.map((crumb, index) => (
+            <li class="flex items-center">
+              {index > 0 && <span class="mx-2">/</span>}
+              {index === breadcrumbs.length - 1 ? (
+                <span class="text-white">{crumb.name}</span>
+              ) : (
+                <a href={crumb.href} class="hover:text-white transition-colors">{crumb.name}</a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <div class="text-white">
+          <h1 class="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+            Free Ray Gun Generator
+          </h1>
+          <div class="inline-block px-4 py-2 bg-red-600/20 border border-red-500 rounded-lg mb-6">
+            <span class="text-red-400 font-semibold">WEAPON</span>
+          </div>
+          <p class="text-xl text-white/80 mb-8">
+            Get a free ray gun for 99 Nights in the Forest! This advanced alien tech weapon fires hit-scan projectiles that deal devastating damage to all threats.
+          </p>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span class="text-white/90">Hit-scan projectiles (instant hit)</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span class="text-white/90">Heavy damage output</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span class="text-white/90">Powered by Alien Tech Energy</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span class="text-white/90">Effective against all enemies</span>
+            </div>
+          </div>
+
+          <a
+            href="/generator"
+            class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 rounded-lg transition-colors"
+          >
+            Get Free Ray Gun
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class="flex justify-center">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-2xl blur-xl"></div>
+            <img
+              src={raygun.src}
+              alt="Ray Gun weapon in 99 Nights in the Forest Roblox game"
+              class="relative w-full max-w-md h-auto object-contain rounded-2xl"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Information -->
+      <section class="grid lg:grid-cols-3 gap-8 mb-16">
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h2 class="text-2xl font-bold text-white mb-4">What is the Ray Gun?</h2>
+          <p class="text-white/70 leading-relaxed">
+            The Ray Gun is an advanced weapon powered by Alien Tech Energy. Unlike traditional ranged weapons, it fires hit-scan projectiles that instantly hit their target, making it extremely effective against fast-moving enemies in the forest.
+          </p>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h2 class="text-2xl font-bold text-white mb-4">How to Use</h2>
+          <ol class="text-white/70 space-y-2">
+            <li>1. Enter your Roblox username</li>
+            <li>2. Select Ray Gun from weapon options</li>
+            <li>3. Complete verification process</li>
+            <li>4. Receive ray gun instantly</li>
+            <li>5. Aim and fire at threats</li>
+          </ol>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+          <h2 class="text-2xl font-bold text-white mb-4">Combat Tips</h2>
+          <ul class="text-white/70 space-y-2">
+            <li>• Perfect for long-range combat</li>
+            <li>• conserve Alien Tech Energy</li>
+            <li>• Effective against flying enemies</li>
+            <li>• Combine with melee weapons</li>
+            <li>• Aim for headshots for max damage</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Related Items -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8">Related Items</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <a href="/items/chainsaw" class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+            <div class="text-blue-400 font-semibold mb-2">TOOL</div>
+            <h3 class="text-xl font-bold text-white mb-2">Chainsaw</h3>
+            <p class="text-white/60">Rapid tree cutting and defensive tool</p>
+          </a>
+
+          <a href="/items/diamonds" class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+            <div class="text-purple-400 font-semibold mb-2">CURRENCY</div>
+            <h3 class="text-xl font-bold text-white mb-2">Free Diamonds</h3>
+            <p class="text-white/60">Get 5,000 or 10,000 diamonds instantly</p>
+          </a>
+
+          <a href="/items/hammer" class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-colors">
+            <div class="text-blue-400 font-semibold mb-2">TOOL</div>
+            <h3 class="text-xl font-bold text-white mb-2">Hammer</h3>
+            <p class="text-white/60">Essential building and repair tool</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">What makes the Ray Gun special?</h3>
+            <p class="text-white/70">The Ray Gun uses hit-scan technology, meaning projectiles instantly hit their target without travel time, making it impossible for enemies to dodge.</p>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">How does Alien Tech Energy work?</h3>
+            <p class="text-white/70">Alien Tech Energy is a unique power source that regenerates over time. The Ray Gun uses this energy instead of traditional ammunition.</p>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">Is the Ray Gun better than other weapons?</h3>
+            <p class="text-white/70">For long-range combat, yes! The Ray Gun excels at distance fighting but may be less effective at close range compared to melee weapons.</p>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-3">Can I use the Ray Gun against all enemies?</h3>
+            <p class="text-white/70">Yes! The Ray Gun is effective against all types of forest threats, including flying enemies that are difficult to hit with melee weapons.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { Schema } from "astro-seo-schema";
+</script>
+
+<Schema
+  item={{
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "Ray Gun - 99 Nights in the Forest",
+    description: "Free ray gun weapon for 99 Nights in the Forest Roblox game. Advanced alien tech with hit-scan projectiles.",
+    category: "Weapon",
+    brand: {
+      "@type": "Brand",
+      name: "99 Nights in the Forest"
+    },
+    offers: {
+      "@type": "Offer",
+      description: "Free ray gun generator",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock"
+    },
+    image: `${import.meta.env.SITE}/Raygun.png`
+  }}
+/>

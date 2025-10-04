@@ -1,0 +1,338 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import backgroundImage from "../../assets/backgroundImage.png";
+import { Schema } from "astro-seo-schema";
+
+const guides = [
+  {
+    title: "Beginner Tips",
+    description: "Essential tips for new players to survive their first nights and build a strong foundation.",
+    href: "/guides/beginner-tips",
+    difficulty: "Beginner",
+    readTime: "5 min",
+    icon: "🎯",
+    color: "green"
+  },
+  {
+    title: "Survival Strategies",
+    description: "Advanced techniques and strategies for long-term survival and completing all 99 nights.",
+    href: "/guides/survival-strategies",
+    difficulty: "Advanced",
+    readTime: "8 min",
+    icon: "🛡️",
+    color: "blue"
+  },
+  {
+    title: "Complete Item Guide",
+    description: "Detailed information about all items, weapons, tools, and how to use them effectively.",
+    href: "/guides/item-guide",
+    difficulty: "All Levels",
+    readTime: "10 min",
+    icon: "📦",
+    color: "purple"
+  },
+  {
+    title: "Base Building Guide",
+    description: "Learn how to build impenetrable bases and defensive structures to protect against threats.",
+    href: "/guides/base-building",
+    difficulty: "Intermediate",
+    readTime: "7 min",
+    icon: "🏗️",
+    color: "orange"
+  },
+  {
+    title: "Enemy Guide",
+    description: "Complete guide to all forest enemies, their patterns, weaknesses, and how to defeat them.",
+    href: "/guides/enemy-guide",
+    difficulty: "Intermediate",
+    readTime: "6 min",
+    icon: "👾",
+    color: "red"
+  },
+  {
+    title: "Resource Management",
+    description: "Master the art of managing diamonds, materials, and supplies for maximum efficiency.",
+    href: "/guides/resource-management",
+    difficulty: "All Levels",
+    readTime: "5 min",
+    icon: "💎",
+    color: "cyan"
+  }
+];
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Guides", href: "/guides" }
+];
+
+const getDifficultyColor = (difficulty) => {
+  switch (difficulty) {
+    case "Beginner": return "text-green-400 bg-green-600/20 border-green-500";
+    case "Intermediate": return "text-yellow-400 bg-yellow-600/20 border-yellow-500";
+    case "Advanced": return "text-red-400 bg-red-600/20 border-red-500";
+    default: return "text-blue-400 bg-blue-600/20 border-blue-500";
+  }
+};
+
+const getColorClasses = (color) => {
+  const colors = {
+    green: "from-green-500 to-green-600",
+    blue: "from-blue-500 to-blue-600",
+    purple: "from-purple-500 to-purple-600",
+    orange: "from-orange-500 to-orange-600",
+    red: "from-red-500 to-red-600",
+    cyan: "from-cyan-500 to-cyan-600"
+  };
+  return colors[color] || "from-gray-500 to-gray-600";
+};
+---
+
+<Layout
+  title="Game Guides - 99 Nights in the Forest"
+  description="Complete collection of guides for 99 Nights in the Forest Roblox game. Learn survival strategies, item usage, base building, and more from beginner to advanced tips."
+>
+  <main class="relative min-h-screen bg-[linear-gradient(180deg,#000f15_0%,#000000_100%)]">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#042739_0%,#01171f_55%,#000000_100%)]" />
+      <div class="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 overflow-hidden blur-[5px]">
+        <img src={backgroundImage.src} alt="" class="h-full w-full object-cover" />
+      </div>
+      <div class="absolute inset-0 bg-black/35" />
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-8">
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-8">
+        <ol class="flex items-center space-x-2 text-white/60 text-sm">
+          {breadcrumbs.map((crumb, index) => (
+            <li class="flex items-center">
+              {index > 0 && <span class="mx-2">/</span>}
+              {index === breadcrumbs.length - 1 ? (
+                <span class="text-white">{crumb.name}</span>
+              ) : (
+                <a href={crumb.href} class="hover:text-white transition-colors">{crumb.name}</a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+          Game Guides
+        </h1>
+        <p class="text-xl text-white/80 max-w-3xl mx-auto">
+          Master 99 Nights in the Forest with our comprehensive guides. From beginner basics to advanced survival strategies, we have everything you need to conquer the forest.
+        </p>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+          <div class="text-3xl font-bold text-green-400 mb-2">6</div>
+          <div class="text-white/80">Total Guides</div>
+        </div>
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+          <div class="text-3xl font-bold text-blue-400 mb-2">41</div>
+          <div class="text-white/80">Min Read Time</div>
+        </div>
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+          <div class="text-3xl font-bold text-purple-400 mb-2">100%</div>
+          <div class="text-white/80">Free Content</div>
+        </div>
+        <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+          <div class="text-3xl font-bold text-orange-400 mb-2">24/7</div>
+          <div class="text-white/80">Updated</div>
+        </div>
+      </div>
+
+      <!-- Featured Guide -->
+      <section class="mb-16">
+        <div class="bg-gradient-to-r from-green-600/20 to-blue-600/20 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="text-3xl">⭐</div>
+            <h2 class="text-2xl font-bold text-white">Featured Guide</h2>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 class="text-3xl font-bold text-white mb-4">Beginner Tips</h3>
+              <p class="text-white/80 mb-6">
+                Perfect for new players! Learn the essential strategies to survive your first nights and build a strong foundation for your 99-night journey.
+              </p>
+              <div class="flex items-center gap-4 mb-6">
+                <span class="px-3 py-1 bg-green-600/20 border border-green-500 rounded-lg text-green-400 text-sm font-semibold">
+                  Beginner Friendly
+                </span>
+                <span class="text-white/60">5 min read</span>
+              </div>
+              <a
+                href="/guides/beginner-tips"
+                class="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-lg transition-colors"
+              >
+                Read Guide
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+              </a>
+            </div>
+            <div class="text-center">
+              <div class="text-6xl mb-4">🎯</div>
+              <p class="text-white/60">Start your survival journey the right way!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- All Guides Grid -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8">All Guides</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {guides.map((guide) => (
+            <a
+              href={guide.href}
+              class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all hover:scale-105 group"
+            >
+              <div class="flex items-start justify-between mb-4">
+                <div class="text-4xl">{guide.icon}</div>
+                <span class={`px-2 py-1 rounded text-xs font-semibold border ${getDifficultyColor(guide.difficulty)}`}>
+                  {guide.difficulty}
+                </span>
+              </div>
+
+              <h3 class={`text-xl font-bold text-white mb-3 bg-gradient-to-r ${getColorClasses(guide.color)} bg-clip-text text-transparent`}>
+                {guide.title}
+              </h3>
+
+              <p class="text-white/60 text-sm leading-relaxed mb-4">{guide.description}</p>
+
+              <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                <span class="text-white/60 text-sm">{guide.readTime} read</span>
+                <div class="flex items-center gap-2 text-white/60 group-hover:text-white transition-colors">
+                  <span class="text-sm">Read Guide</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Guide Categories -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8">Browse by Category</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+            <div class="text-3xl mb-3">🎯</div>
+            <h3 class="text-lg font-bold text-white mb-2">Getting Started</h3>
+            <p class="text-white/60 text-sm mb-4">Perfect for new players</p>
+            <div class="text-green-400 font-semibold">2 guides</div>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+            <div class="text-3xl mb-3">⚔️</div>
+            <h3 class="text-lg font-bold text-white mb-2">Combat & Defense</h3>
+            <p class="text-white/60 text-sm mb-4">Master fighting techniques</p>
+            <div class="text-red-400 font-semibold">2 guides</div>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+            <div class="text-3xl mb-3">🏗️</div>
+            <h3 class="text-lg font-bold text-white mb-2">Building & Crafting</h3>
+            <p class="text-white/60 text-sm mb-4">Create amazing structures</p>
+            <div class="text-blue-400 font-semibold">1 guide</div>
+          </div>
+
+          <div class="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
+            <div class="text-3xl mb-3">💎</div>
+            <h3 class="text-lg font-bold text-white mb-2">Resources</h3>
+            <p class="text-white/60 text-sm mb-4">Manage supplies efficiently</p>
+            <div class="text-purple-400 font-semibold">1 guide</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="text-center mb-16">
+        <div class="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm rounded-2xl p-12 border border-white/10">
+          <h2 class="text-3xl font-bold text-white mb-4">Need Items for Your Journey?</h2>
+          <p class="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+            Get equipped with the best weapons, tools, and diamonds using our free generator. Start your adventure fully prepared!
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/generator"
+              class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg"
+            >
+              Get Free Items
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </a>
+            <a
+              href="/items"
+              class="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-lg transition-colors text-lg border border-white/20"
+            >
+              Browse All Items
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tips Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">Quick Tips</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="text-4xl mb-3">💡</div>
+            <h3 class="text-lg font-bold text-white mb-2">Start with Beginner Tips</h3>
+            <p class="text-white/60 text-sm">New to the game? Our beginner guide is the perfect place to start.</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-3">📚</div>
+            <h3 class="text-lg font-bold text-white mb-2">Read Multiple Guides</h3>
+            <p class="text-white/60 text-sm">Combine knowledge from different guides for the best results.</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-3">🔄</div>
+            <h3 class="text-lg font-bold text-white mb-2">Stay Updated</h3>
+            <p class="text-white/60 text-sm">Our guides are regularly updated with the latest strategies.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { Schema } from "astro-seo-schema";
+</script>
+
+<Schema
+  item={{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Game Guides - 99 Nights in the Forest",
+    description: "Complete collection of guides for 99 Nights in the Forest Roblox game including beginner tips, survival strategies, and advanced techniques.",
+    url: `${import.meta.env.SITE}/guides`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: guides.length,
+      itemListElement: guides.map((guide, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Article",
+          name: guide.title,
+          description: guide.description,
+          url: `${import.meta.env.SITE}${guide.href}`
+        }
+      }))
+    }
+  }}
+/>

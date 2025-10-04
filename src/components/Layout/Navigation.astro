@@ -20,6 +20,22 @@ const currentPath = Astro.url.pathname;
       Home
     </a>
     <a
+      href="/items"
+      class={`leading-[32px] transition-colors hover:text-[#ff5c5c] ${
+        currentPath.startsWith("/items") ? "text-[#ff5c5c]" : "text-white"
+      }`}
+    >
+      Items
+    </a>
+    <a
+      href="/guides"
+      class={`leading-[32px] transition-colors hover:text-[#ff5c5c] ${
+        currentPath.startsWith("/guides") ? "text-[#ff5c5c]" : "text-white"
+      }`}
+    >
+      Guides
+    </a>
+    <a
       href="/generator"
       class={`leading-[32px] transition-colors hover:text-[#ff5c5c] ${
         currentPath === "/generator" ? "text-[#ff5c5c]" : "text-white"

@@ -7,6 +7,7 @@ import diamonds from "../assets/Diamonds.png";
 import hammer from "../assets/Hammer.png";
 import raygun from "../assets/Raygun.png";
 import bloodDrip from "../assets/bloodDrip.gif";
+import { Schema } from "astro-seo-schema";
 
 const items = [
   {
@@ -628,3 +629,55 @@ const loadingMessages = [
   </script>
 </Layout>
 
+<script>
+  import { Schema } from "astro-seo-schema";
+</script>
+
+<Schema
+  item={{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How do I get free items in 99 Nights in the Forest?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Simply select an item from our generator, enter your Roblox username, complete the verification process, and you'll receive your items instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Is the generator safe to use?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes! Our generator uses secure methods that won't risk your Roblox account. Thousands of players use it daily to get free items."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "How long does it take to receive items?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Item delivery is usually instant after completing the verification process. Most users receive their items within 5-10 minutes."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "Can I use the generator multiple times?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes! You can use our generator multiple times to get different items or the same item again. There's no limit to how many times you can claim free items."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "What items can I get for free?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You can get weapons like the Ray Gun, tools like the Chainsaw and Hammer, medical supplies like Bandages, and diamond packages of 5,000 or 10,000 diamonds."
+        }
+      }
+    ]
+  }}
+/>
