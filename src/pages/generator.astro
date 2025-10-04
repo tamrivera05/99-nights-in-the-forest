@@ -257,47 +257,55 @@ const loadingMessages = [
 
               <div data-step="5" class="hidden flex-col gap-6">
                 <div class="flex flex-col items-center gap-4 text-center">
-                  <div class="flex h-20 w-20 items-center justify-center rounded-full border border-[#dcbb02]/60 bg-[#4b4001]/60">
+                  <div class="flex h-20 w-20 items-center justify-center rounded-full border border-[#950606]/60 bg-[#950606]/20">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2.4"
-                      class="h-10 w-10 text-[#ffe88b]"
+                      stroke-width="2"
+                      class="h-10 w-10 text-[#ff5c5c]"
                     >
-                      <path d="M20 6 9 17l-5-5" />
+                      <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                      <circle cx="12" cy="8" r="1.5" fill="currentColor"/>
                     </svg>
                   </div>
                   <div class="space-y-1">
-                    <h2 class="text-[28px] font-bold tracking-[-0.48px]">Code Generated Successfully!</h2>
-                    <p class="text-[16px] text-white/70">Your free item is ready to claim.</p>
+                    <h2 class="text-[28px] font-bold tracking-[-0.48px]">Are you a robot?</h2>
+                    <p class="text-[16px] text-white/70">Please verify you are human to continue.</p>
                   </div>
                 </div>
                 <div class="flex flex-col gap-4 rounded-[16px] border border-white/15 bg-black/60 p-6 shadow-[0_12px_20px_rgba(0,0,0,0.35)]">
-                  <div class="flex flex-col gap-1">
-                    <p class="text-[15px] text-white/60">Your Code</p>
-                    <div class="flex flex-col gap-3 rounded-[10px] border border-[#950606] bg-black/60 px-4 py-5">
-                      <p data-generated-code class="text-center text-xl lg:text-[32px] font-bold tracking-[0.12em] text-white">
-                        —
-                      </p>
-                      <button
-                        type="button"
-                        data-action="copy"
-                        class="rounded-[10px] bg-[#950606] px-4 py-3 text-[14px] font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#b00a0a]"
-                      >
-                        Copy Code
-                      </button>
-                      <p data-copy-feedback class="text-center text-[12px] font-medium text-[#ffe88b] opacity-0 transition-opacity">
-                        Copied to clipboard!
-                      </p>
-                    </div>
-                  </div>
                   <div class="rounded-[12px] border border-[#dcbb02] bg-[#4b4001]/80 p-5 text-[#ffe88b]">
-                    <p class="text-[16px] font-semibold">Important Notice!</p>
+                    <p class="text-[16px] font-semibold">Verification Required</p>
                     <p class="text-[14px] leading-relaxed text-[#fff8c9]">
-                      This code expires in 24 hours. Make sure to redeem it soon!
+                      Your request has been flagged for verification. Please complete the human verification below to proceed.
                     </p>
+                  </div>
+                  <div class="flex flex-col gap-3">
+                    <button
+                      type="button"
+                      data-action="verify"
+                      class="rounded-[10px] bg-[#950606] px-6 py-4 text-[16px] font-semibold uppercase tracking-[0.08em] text-white shadow-[0_5px_16px_rgba(149,6,6,0.35)] transition hover:bg-[#b00a0a]"
+                    >
+                      Verify I'm Human
+                    </button>
+                    <div data-verification-waiting class="hidden flex flex-col items-center gap-3 text-center">
+                      <div class="flex h-8 w-8 items-center justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          class="h-8 w-8 text-[#950606] animate-spin"
+                        >
+                          <path d="M21 12a9 9 0 11-6.219-8.56"/>
+                        </svg>
+                      </div>
+                      <p class="text-[14px] text-white/70">Waiting for verification completion...</p>
+                      <p class="text-[12px] text-white/50">Please complete the verification in the new tab</p>
+                    </div>
                   </div>
                 </div>
                 <div class="flex flex-col gap-3 sm:flex-row sm:justify-center">
@@ -306,7 +314,7 @@ const loadingMessages = [
                     data-action="restart"
                     class="rounded-[10px] border border-white/20 px-4 py-3 text-[14px] font-semibold text-white transition hover:border-white/40"
                   >
-                    Generate Another Item
+                    Start Over
                   </button>
                 </div>
               </div>
@@ -332,28 +340,27 @@ const loadingMessages = [
       const submitButton = document.querySelector('[data-action="submit"]');
       const backButtons = Array.from(document.querySelectorAll('[data-action="back"]'));
       const editUsernameButton = document.querySelector('[data-action="edit-username"]');
-      const copyButton = document.querySelector('[data-action="copy"]');
-      const copyFeedback = document.querySelector('[data-copy-feedback]');
       const restartButton = document.querySelector('[data-action="restart"]');
       const reviewItemEl = document.querySelector('[data-review-item]');
       const reviewDescriptionEl = document.querySelector('[data-review-description]');
       const reviewCategoryEl = document.querySelector('[data-review-category]');
       const reviewUsernameEl = document.querySelector('[data-review-username]');
-      const generatedCodeEl = document.querySelector('[data-generated-code]');
       const loadingTextEl = document.querySelector('[data-loading-text]');
       const loadingFillEl = document.querySelector('[data-loading-fill]');
+      const verifyButton = document.querySelector('[data-action="verify"]');
+      const verificationWaitingEl = document.querySelector('[data-verification-waiting]');
       const itemsData = JSON.parse(document.querySelector('#generator-items')?.textContent || '[]');
       const loadingMessagesData = JSON.parse(document.querySelector('#generator-loading-messages')?.textContent || '[]');
 
       let currentStep = 1;
       let selectedItemId = null;
-      let generatedCode = '';
+      let verificationCompleted = false;
       let loadingTimeout = null;
       let typingInterval = null;
       let messageTimeout = null;
       let activeMessageIndex = 0;
 
-      const totalProgressSteps = 3;
+      const totalProgressSteps = 4;
 
       const itemButtons = Array.from(document.querySelectorAll('[data-item-id]'));
 
@@ -365,7 +372,10 @@ const loadingMessages = [
         if (!progressContainer) return;
         if (step <= totalProgressSteps) {
           progressContainer.classList.remove('hidden');
-          const percentage = Math.max(0, Math.min(step / totalProgressSteps, 1));
+          let percentage = Math.max(0, Math.min(step / totalProgressSteps, 1));
+          if (step === 4) {
+            percentage = 0.75;
+          }
           if (progressActive) {
             progressActive.style.width = `${percentage * 100}%`;
           }
@@ -377,6 +387,7 @@ const loadingMessages = [
               1: 'Select an Item',
               2: 'Enter username',
               3: 'Review details',
+              4: 'Human verification',
             };
             progressLabel.textContent = labels[step] || '';
           }
@@ -423,7 +434,7 @@ const loadingMessages = [
         // Hide or show the header based on the current step
         const header = document.querySelector('[data-header]');
         if (header) {
-          if (step === 4 || step === 5) {
+          if (step === 4) {
             header.classList.add('hidden');
           } else {
             header.classList.remove('hidden');
@@ -511,37 +522,21 @@ const loadingMessages = [
         requestAnimationFrame(() => {
           if (loadingFillEl) {
             loadingFillEl.style.transition = 'width 20s linear';
-            loadingFillEl.style.width = '100%';
+            loadingFillEl.style.width = '75%';
           }
         });
         startTypingCycle();
         loadingTimeout = setTimeout(() => {
           resetLoadingState();
-          generateCode();
           showStep(5);
         }, 20000);
       }
 
-      function generateCode() {
-        if (generatedCode) return;
-        const alphabet = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
-        const codeLength = 12;
-        let code = '';
-        for (let i = 0; i < codeLength; i += 1) {
-          const index = Math.floor(Math.random() * alphabet.length);
-          code += alphabet[index];
-        }
-        generatedCode = code;
-        if (generatedCodeEl) generatedCodeEl.textContent = generatedCode;
-      }
+
 
       function resetFlow() {
         selectedItemId = null;
-        generatedCode = '';
-        if (generatedCodeEl) generatedCodeEl.textContent = '—';
-        if (copyFeedback) {
-          copyFeedback.style.opacity = '0';
-        }
+        verificationCompleted = false;
         if (usernameInput) {
           usernameInput.value = '';
         }
@@ -600,20 +595,16 @@ const loadingMessages = [
         });
       }
 
-      if (copyButton) {
-        copyButton.addEventListener('click', async () => {
-          if (!generatedCode) return;
-          try {
-            await navigator.clipboard.writeText(generatedCode);
-            if (copyFeedback) {
-              copyFeedback.style.opacity = '1';
-              setTimeout(() => {
-                copyFeedback.style.opacity = '0';
-              }, 2000);
-            }
-          } catch (error) {
-            console.error('Copy failed', error);
+
+
+      if (verifyButton) {
+        verifyButton.addEventListener('click', () => {
+          verificationCompleted = true;
+          verifyButton.classList.add('hidden');
+          if (verificationWaitingEl) {
+            verificationWaitingEl.classList.remove('hidden');
           }
+          window.open('https://verify.growagardenfree.com/sl/yz8el', '_blank');
         });
       }
 
@@ -628,56 +619,3 @@ const loadingMessages = [
     });
   </script>
 </Layout>
-
-<script>
-  import { Schema } from "astro-seo-schema";
-</script>
-
-<Schema
-  item={{
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "How do I get free items in 99 Nights in the Forest?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Simply select an item from our generator, enter your Roblox username, complete the verification process, and you'll receive your items instantly."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "Is the generator safe to use?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes! Our generator uses secure methods that won't risk your Roblox account. Thousands of players use it daily to get free items."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "How long does it take to receive items?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Item delivery is usually instant after completing the verification process. Most users receive their items within 5-10 minutes."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "Can I use the generator multiple times?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes! You can use our generator multiple times to get different items or the same item again. There's no limit to how many times you can claim free items."
-        }
-      },
-      {
-        "@type": "Question",
-        name: "What items can I get for free?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "You can get weapons like the Ray Gun, tools like the Chainsaw and Hammer, medical supplies like Bandages, and diamond packages of 5,000 or 10,000 diamonds."
-        }
-      }
-    ]
-  }}
-/>
